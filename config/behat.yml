@@ -1,0 +1,170 @@
+default:
+  autoload:
+    '': "%paths.base%/../features/bootstrap"
+
+  suites:
+    inventory:
+      paths: [ "%paths.base%/../features/inventory" ]
+      contexts:
+        - InventoryContext:
+            env: behat
+
+    automation:
+      paths: [ "%paths.base%/../features/automation" ]
+      contexts:
+        - AutomationContext:
+            env: behat
+
+    batch_picking:
+      paths: [ "%paths.base%/../features/batch_picking" ]
+      contexts:
+        - BatchPickingContext:
+            env: behat
+
+    bulk_shipping:
+      paths: [ "%paths.base%/../features/bulk_shipping" ]
+      contexts:
+        - BulkShippingContext:
+            env: behat
+
+    billing:
+      paths: [ "%paths.base%/../features/billing" ]
+      contexts:
+        - BillingContext:
+            env: behat
+
+    public_api:
+      paths: [ "%paths.base%/../features/public_api" ]
+      contexts:
+        - PublicApiContext:
+            env: behat
+
+    product:
+      paths: [ "%paths.base%/../features/product" ]
+      contexts:
+        - ProductContext:
+            env: behat
+
+    wholesale:
+      paths: [ "%paths.base%/../features/wholesale" ]
+      contexts:
+        - WholesaleContext:
+            env: behat
+
+    shipping:
+      paths: [ "%paths.base%/../features/shipping" ]
+      contexts:
+        - ShippingContext:
+            env: behat
+
+    login:
+      paths: [ "%paths.base%/../features/login" ]
+      contexts:
+        - LoginContext:
+            env: behat-for-browser
+            webDriverUrl: "http://selenium-hub:4444/wd/hub"
+
+    multiwarehouse:
+      paths: [ "%paths.base%/../features/multiwarehouse" ]
+      contexts:
+        - MultiwarehouseContext:
+            env: behat
+
+    counting:
+      paths: [ "%paths.base%/../features/counting" ]
+      contexts:
+        - CountingContext:
+            env: behat
+
+    location:
+      paths: [ "%paths.base%/../features/locations" ]
+      contexts:
+        - LocationContext:
+            env: behat
+
+    lot_tracking:
+      paths: [ "%paths.base%/../features/lot_tracking" ]
+      contexts:
+        - LotTrackingContext:
+            env: behat
+
+    features:
+      paths: [ "%paths.base%/../features/features" ]
+      contexts:
+        - FeaturesContext:
+            env: behat
+
+    easypost:
+      paths: [ "%paths.base%/../features/easypost" ]
+      contexts:
+        - EasypostContext:
+            env: behat
+
+    purchase_order:
+      paths: [ "%paths.base%/../features/purchase_order" ]
+      contexts:
+        - PurchaseOrderContext:
+            env: behat
+
+    report:
+      paths: [ "%paths.base%/../features/report" ]
+      contexts:
+        - ReportContext:
+            env: behat
+
+gitlab-ci:
+  formatters:
+    progress: true
+
+  suites:
+    automation:
+      filters:
+        tags: "~@skip-ci"
+
+    billing:
+      filters:
+        tags: "~@skip-ci"
+
+    inventory:
+      filters:
+        tags: "~@skip-ci"
+
+    public_api:
+      filters:
+        tags: "~@skip-ci"
+
+    wholesale:
+      filters:
+        tags: "~@skip-ci"
+
+    product:
+      filters:
+        tags: "~@skip-ci"
+
+    shipping:
+      filters:
+        tags: "~@skip-ci"
+
+    location:
+      filters:
+        tags: "~@skip-ci"
+
+    features:
+      filters:
+        tags: "~@skip-ci"
+
+    batch_picking:
+      filters:
+        tags: "~@skip-ci"
+
+    counting:
+      filters:
+        tags: "~@skip-ci"
+
+    easypost:
+      filters:
+        tags: "~@skip-ci"
+
+    purchase_order:
+        filters:
+          tags: "~@skip-ci"

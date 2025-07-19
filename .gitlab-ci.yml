@@ -1,0 +1,275 @@
+stages:
+  - build
+  - deploy
+  - cleanup
+
+.prepare_tools: &prepare_tools
+  - echo "Preparing tools"
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  - sudo apt-get update -qy
+  - sudo apt-get install -y rsync mongodb-clients
+
+.setup_ssh: &setup_ssh
+  - echo "Setting up SSH"
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+.initial_setup: &initial_setup
+  - echo "Running initial setup"
+  - *prepare_tools
+  - *setup_ssh
+  - sudo chown -R `whoami` .
+
+.install_dependencies: &install_dependencies
+  - echo "Installing dependencies"
+  - composer config http-basic.www.setasign.com ndr@packiyo.com composer-RAi6rwDR8UP65Wg
+  - composer install --prefer-dist --no-ansi --no-interaction --no-progress
+  - yarn install --pure-lockfile
+
+.migrate_database: &migrate_database
+  - echo "Migrating database"
+  - php artisan migrate --force
+
+.compile_dev_assets: &compile_dev_assets
+  - echo "Compiling dev assets"
+  - npm run dev
+
+.compile_assets: &compile_assets
+  - echo "Compiling prod assets"
+  - npm run prod
+
+.compile_remix: &compile_remix
+  - echo "Compiling remix"
+  - cd remix
+  - cp env.example .env
+  - sed -i "/^VITE_BACKEND_DOMAIN=/c\VITE_BACKEND_DOMAIN=https://$CI_MERGE_REQUEST_ID.mr.packiyo.com" .env
+  - sed -i "/^VITE_API_HOST=/c\VITE_API_HOST=https://$CI_MERGE_REQUEST_ID.mr.packiyo.com/api/frontendv1" .env
+  - sed -i "/^VITE_API_V1_HOST=/c\VITE_API_V1_HOST=https://$CI_MERGE_REQUEST_ID.mr.packiyo.com/api/v1" .env
+  - sed -i "/^CYPRESS_HOST_FRONTEND_PACKIYO=/c\CYPRESS_HOST_FRONTEND_PACKIYO=https://$CI_MERGE_REQUEST_ID.cypress.frontend.packiyo.com" .env
+  - sed -i "/^CYPRESS_HOST_FRONTEND_PACKIYO_REMIX=/c\CYPRESS_HOST_FRONTEND_PACKIYO_REMIX=https://$CI_MERGE_REQUEST_ID.cypress.frontend-remix.packiyo.com" .env
+  - sed -i "/^CYPRESS_USER_EMAIL=/c\CYPRESS_USER_EMAIL=https://$CI_MERGE_REQUEST_ID.cypress.frontend-remix-user.packiyo.com" .env
+  - sed -i "/^CYPRESS_USER_PASSWORD=/c\CYPRESS_USER_PASSWORD=https://$CI_MERGE_REQUEST_ID.cypress.frontend-remix-user-password.packiyo.com" .env
+  - yarn install --pure-lockfile
+  - npm run build
+  - cd ..
+
+.start_remix: &start_remix
+  - echo "Starting remix"
+  - ssh $SSH_USERNAME@$HOST_IP "httpdocs/setupremix.sh $CI_MERGE_REQUEST_ID"
+
+.remove_remix: &remove_remix
+  - echo "Removing remix"
+  - ssh $SSH_USERNAME@$HOST_IP "httpdocs/removeremix.sh $CI_MERGE_REQUEST_ID"
+
+.setup_for_behat: &setup_for_behat
+  - echo "Configuring the Behat environment"
+  - sed -i "/^DB_HOST=/c\DB_HOST=$HOST_IP" .env.behat
+  - sed -i "/^DB_DATABASE=/c\DB_DATABASE=testing_behat_$CI_MERGE_REQUEST_ID" .env.behat
+  - sed -i "/^DB_USERNAME=/c\DB_USERNAME=$DB_USERNAME" .env.behat
+  - sed -i "/^DB_PASSWORD=/c\DB_PASSWORD=$DB_PASSWORD" .env.behat
+  - echo "Dropping and creating the testing database"
+  - ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"DROP DATABASE IF EXISTS testing_behat_$CI_MERGE_REQUEST_ID;\""
+  - ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"CREATE DATABASE testing_behat_$CI_MERGE_REQUEST_ID;\""
+  - echo "Migrating the testing database"
+  - php artisan migrate --env=behat --force
+  - sed -i "/^DOC_DB_HOST=/c\DOC_DB_HOST=$DOC_DB_HOST" .env.behat
+  - sed -i "/^DOC_DB_PORT=/c\DOC_DB_PORT=$DOC_DB_PORT" .env.behat
+  - sed -i "/^DOC_DB_USERNAME=/c\DOC_DB_USERNAME=$DOC_DB_USERNAME" .env.behat
+  - sed -i "/^DOC_DB_PASSWORD=/c\DOC_DB_PASSWORD=$DOC_DB_PASSWORD" .env.behat
+
+.run_behat_tests: &run_behat_tests
+  - echo "Running Behat test suites"
+  # Order is smallest to largest, for faster failing.
+  - vendor/bin/behat --profile gitlab-ci --suite features
+  - vendor/bin/behat --profile gitlab-ci --suite public_api
+  - vendor/bin/behat --profile gitlab-ci --suite inventory
+  - vendor/bin/behat --profile gitlab-ci --suite batch_picking
+  - vendor/bin/behat --profile gitlab-ci --suite product
+  - vendor/bin/behat --profile gitlab-ci --suite location
+  - vendor/bin/behat --profile gitlab-ci --suite shipping
+  - vendor/bin/behat --profile gitlab-ci --suite lot_tracking
+  - vendor/bin/behat --profile gitlab-ci --suite counting
+  - vendor/bin/behat --profile gitlab-ci --suite easypost
+  - vendor/bin/behat --profile gitlab-ci --suite wholesale
+  - vendor/bin/behat --profile gitlab-ci --suite billing
+  - vendor/bin/behat --profile gitlab-ci --suite automation
+
+.drop_behat_database: &drop_behat_database
+  - echo "Dropping the Behat database"
+  - ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"DROP DATABASE IF EXISTS testing_behat_$CI_MERGE_REQUEST_ID;\""
+  - echo "Dropped the Behat database"
+
+variables:
+  DEPLOY_DB_OVERWRITE: "false"
+
+# Function to check for a specific keyword in the commit message
+.determine_deploy_option: &determine_deploy_option
+  - |
+    if echo "$CI_COMMIT_MESSAGE" | grep -q "\[DB_OVERWRITE\]"; then
+      echo "Commit message has [DB_OVERWRITE]. Deploying with DB overwrite.";
+      DEPLOY_DB_OVERWRITE="true";
+    else
+      echo "Commit message does not have [DB_OVERWRITE]. Deploying without DB overwrite.";
+      DEPLOY_DB_OVERWRITE="false";
+    fi
+  - |
+    if echo "$CI_MERGE_REQUEST_TITLE" | grep -q "Draft:"; then
+      echo "Merge request title has Draft:. Not deploying.";
+      SHOULD_DEPLOY="false";
+    else
+      echo "Merge request title does not have Draft:. Deploying.";
+      SHOULD_DEPLOY="true";
+    fi
+  - echo "CI_MERGE_REQUEST_TITLE=$CI_MERGE_REQUEST_TITLE"
+  - echo "DEPLOY_DB_OVERWRITE=$DEPLOY_DB_OVERWRITE"
+  - echo "SHOULD_DEPLOY=$SHOULD_DEPLOY"
+
+deploy_merge_request:
+  stage: deploy
+  image: thecodingmachine/php:8.1-v4-fpm-node20
+  script:
+    - *initial_setup
+    - *determine_deploy_option
+    - *install_dependencies
+    - *setup_for_behat
+    - *run_behat_tests
+    - *drop_behat_database
+    - if [[ "$SHOULD_DEPLOY" == "false" ]]; then
+        echo "Not deploying, SHOULD_DEPLOY is false.";
+        exit 0;
+      fi
+    - echo "Preparing configuration"
+    - cp .env.example .env
+    - echo "Preparing database"
+    - sed -i "/^LOG_SLACK_WEBHOOK_URL=/c\LOG_SLACK_WEBHOOK_URL=$LOG_SLACK_WEBHOOK_URL" .env
+    - sed -i "/^DB_HOST=/c\DB_HOST=$HOST_IP" .env
+    - sed -i "/^DB_DATABASE=/c\DB_DATABASE=testing_$CI_MERGE_REQUEST_ID" .env
+    - sed -i "/^DB_USERNAME=/c\DB_USERNAME=$DB_USERNAME" .env
+    - sed -i "/^DB_PASSWORD=/c\DB_PASSWORD=$DB_PASSWORD" .env
+    - sed -i "/^DOC_DB_HOST=/c\DOC_DB_HOST=$DOC_DB_HOST" .env
+    - sed -i "/^DOC_DB_PORT=/c\DOC_DB_PORT=$DOC_DB_PORT" .env
+    - sed -i "/^DOC_DB_USERNAME=/c\DOC_DB_USERNAME=$DOC_DB_USERNAME" .env
+    - sed -i "/^DOC_DB_PASSWORD=/c\DOC_DB_PASSWORD=$DOC_DB_PASSWORD" .env
+    - sed -i "/^DOC_DB_REPLICA_SET=/c\DOC_DB_REPLICA_SET=null" .env
+    - sed -i "/^DOC_DB_TLS=/c\DOC_DB_TLS=false" .env
+    - sed -i "/^MAILGUN_DOMAIN=/c\MAILGUN_DOMAIN=$MAILGUN_DOMAIN" .env
+    - sed -i "/^MAILGUN_SECRET=/c\MAILGUN_SECRET=$MAILGUN_SECRET" .env
+    - sed -i "/^GOOGLE_MAPS_API_KEY=/c\GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_KEY" .env
+    - sed -i "/^GOOGLE_RECAPTCHA_KEY=/c\GOOGLE_RECAPTCHA_KEY=$GOOGLE_RECAPTCHA_KEY" .env
+    - sed -i "/^GOOGLE_RECAPTCHA_SECRET=/c\GOOGLE_RECAPTCHA_SECRET=$GOOGLE_RECAPTCHA_SECRET" .env
+    - sed -i "/^INTEGRATION_ENGINE_BASE_URL=/c\INTEGRATION_ENGINE_BASE_URL=https://integrator.mr.packiyo.com" .env
+    - sed -i "/^SANCTUM_STATEFUL_DOMAINS=/c\SANCTUM_STATEFUL_DOMAINS=$CI_MERGE_REQUEST_ID.mr.packiyo.com" .env
+    - echo "Creating database if not exists"
+    - ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"CREATE DATABASE IF NOT EXISTS testing_$CI_MERGE_REQUEST_ID;\"";
+    - |
+      if [[ "$SHOULD_DEPLOY" == "true" ]]; then
+        echo "Checking if the database has been migrated...";
+        MIGRATED=$(ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e 'USE testing_$CI_MERGE_REQUEST_ID; SHOW TABLES LIKE \"migrations\";'")
+        if [[ -z "$MIGRATED" ]]; then
+          echo "Database has not been migrated. Forcing DB_OVERWRITE to true.";
+          DEPLOY_DB_OVERWRITE="true";
+        else
+          echo "Database has already been migrated. Keeping current DB_OVERWRITE setting.";
+        fi
+      fi
+    - if [[ "$DEPLOY_DB_OVERWRITE" == "true" ]]; then
+        echo "Overwriting DB with staging data.";
+        ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"DROP DATABASE IF EXISTS testing_$CI_MERGE_REQUEST_ID;\"";
+        ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"CREATE DATABASE testing_$CI_MERGE_REQUEST_ID;\"";
+        ssh $SSH_USERNAME@$HOST_IP "mysqldump -u $DB_USERNAME -p$DB_PASSWORD $DB_STAGING_DATABASE > testing_$CI_MERGE_REQUEST_ID.sql";
+        ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD testing_$CI_MERGE_REQUEST_ID < testing_$CI_MERGE_REQUEST_ID.sql";
+      fi
+    - *migrate_database
+    - php artisan key:generate
+    - php artisan storage:link --relative
+    - chmod o+x storage
+    - *compile_dev_assets
+    - *compile_remix
+    - echo "Deploying"
+    - ssh $SSH_USERNAME@$HOST_IP "mkdir -p httpdocs/$CI_MERGE_REQUEST_ID"
+    - rsync -a --exclude '.git*' . $SSH_USERNAME@$HOST_IP:httpdocs/$CI_MERGE_REQUEST_ID
+    - echo "Deploying storage"
+    - rsync -a $SSH_STAGING_USERNAME@$HOST_IP:$STAGING_PATH/storage/app storage/
+    - rsync -a storage/app $SSH_USERNAME@$HOST_IP:httpdocs/$CI_MERGE_REQUEST_ID/storage/
+    - *start_remix
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  environment:
+    name: review/$CI_MERGE_REQUEST_ID
+    url: https://$CI_MERGE_REQUEST_ID.mr.packiyo.com
+    on_stop: cleanup_merge_request
+    auto_stop_in: 1 week
+  variables:
+    PHP_EXTENSION_BCMATH: 1
+    PHP_EXTENSION_IMAGICK: 1
+    PHP_EXTENSION_GD: 1
+    PHP_EXTENSION_INTL: 1
+
+deploy_main:
+  stage: deploy
+  image: thecodingmachine/php:8.1-v4-fpm-node20
+  script:
+    - *initial_setup
+    - *install_dependencies
+    - echo "Preparing configuration"
+    - rsync -a $SSH_STAGING_USERNAME@$HOST_IP:$STAGING_PATH/.env .env
+    - echo "Preparing database"
+    - sed -i "/^DB_HOST=/c\DB_HOST=$HOST_IP" .env
+    - *migrate_database
+    - *compile_assets
+    - *compile_remix
+    - echo "Deploying"
+    - rsync -a --exclude '.env' --exclude '.git*' . $SSH_STAGING_USERNAME@$HOST_IP:$STAGING_PATH/
+    # TODO: start/restart remix
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH'
+  environment:
+    name: staging
+    url: $STAGING_URL
+  variables:
+    PHP_EXTENSION_BCMATH: 1
+
+build_release:
+  stage: build
+  image: thecodingmachine/php:8.1-v4-fpm-node20
+  script:
+    - *initial_setup
+    - *install_dependencies
+    - *compile_assets
+    - *compile_remix
+  artifacts:
+    paths:
+      - public/css
+      - public/fonts
+      - public/images
+      - public/js
+      - public/mix-manifest.json
+      - remix/node_modules
+      - remix/package-lock.json
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME =~ /^release/'
+  variables:
+    PHP_EXTENSION_BCMATH: 1
+
+cleanup_merge_request:
+  stage: cleanup
+  image: thecodingmachine/php:8.1-v4-fpm-node20
+  script:
+    - *setup_ssh
+    - echo "Cleaning up"
+    - ssh $SSH_USERNAME@$HOST_IP "mysql -u $DB_USERNAME -p$DB_PASSWORD -e \"DROP DATABASE IF EXISTS testing_$CI_MERGE_REQUEST_ID;\""
+    - ssh $SSH_USERNAME@$HOST_IP "rm testing_$CI_MERGE_REQUEST_ID.sql"
+    - ssh $SSH_USERNAME@$HOST_IP "rm -rf httpdocs/$CI_MERGE_REQUEST_ID"
+    - *remove_remix
+  environment:
+    name: review/$CI_MERGE_REQUEST_ID
+    action: stop
+  needs:
+    - deploy_merge_request
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+      when: manual
+      allow_failure: true

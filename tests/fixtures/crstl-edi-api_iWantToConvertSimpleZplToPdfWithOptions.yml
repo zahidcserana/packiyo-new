@@ -1,0 +1,71 @@
+
+-
+    request:
+        method: POST
+        url: 'http://api.labelary.com/v1/printers/8dpmm/labels/4x6/'
+        headers:
+            Host: api.labelary.com
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Accept: application/pdf
+            Content-Type: application/x-www-form-urlencoded
+        body: '^XA^FO100,100^fdHello World^FS^XZ'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            Date: 'Thu, 15 Aug 2024 10:28:41 GMT'
+            Content-Type: application/pdf
+            Transfer-Encoding: chunked
+            Connection: keep-alive
+            Server: nginx/1.22.1
+            Cache-Control: 'no-transform, max-age=86400'
+            X-Total-Count: '1'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Max-Age: '3600'
+            Access-Control-Allow-Methods: 'HEAD,POST,GET,OPTIONS'
+            Access-Control-Expose-Headers: 'X-Total-Count,X-Warnings'
+            Access-Control-Allow-Headers: 'X-Quality,X-Rotation,X-Linter,X-Page-Size,X-Page-Orientation,X-Page-Layout,X-Page-Align,X-Page-Vertical-Align,X-API-Key'
+            Vary: Accept-Encoding
+        body: !!binary JVBERi0xLjQKJfbk/N8KMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovVmVyc2lvbiAvMS40Ci9QYWdlcyAyIDAgUgo+PgplbmRvYmoKMyAwIG9iago8PAovQXV0aG9yIChsYWJlbGFyeS5jb20pCi9DcmVhdG9yIChMYWJlbGFyeSAzLjAuMC02ZTI5OWVlYikKL1Byb2R1Y2VyIChMYWJlbGFyeSAzLjAuMC02ZTI5OWVlYikKL0NyZWF0aW9uRGF0ZSAoRDoyMDI0MDgxNTEwMjg0MSswMCcwMCcpCj4+CmVuZG9iagoyIDAgb2JqCjw8Ci9UeXBlIC9QYWdlcwovS2lkcyBbNCAwIFJdCi9Db3VudCAxCi9SZXNvdXJjZXMgPDwKL0V4dEdTdGF0ZSA1IDAgUgovWE9iamVjdCA8PAovRm9ybTEgNiAwIFIKPj4KPj4KPj4KZW5kb2JqCjQgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL01lZGlhQm94IFswLjAgMC4wIDI4OC4wIDQzMi4wXQovR3JvdXAgNyAwIFIKL1BhcmVudCAyIDAgUgovQ29udGVudHMgOCAwIFIKPj4KZW5kb2JqCjUgMCBvYmoKPDwKL2dzMSA5IDAgUgo+PgplbmRvYmoKNiAwIG9iago8PAovTGVuZ3RoIDEyNQovVHlwZSAvWE9iamVjdAovU3VidHlwZSAvRm9ybQovQkJveCBbMC4wIDAuMCAyODguMCA0MzIuMF0KL1Jlc291cmNlcyA8PAovRm9udCAxMCAwIFIKPj4KL0ZpbHRlciAvRmxhdGVEZWNvZGUKPj4Kc3RyZWFtDQp4nB2MzQrCMBCEA972KeaoCOluEkvisaj1Jpb1CUIKCh604MGnN5EPhoH5eRGD4WJE8A7vQt2hfO65TOOAvJCgsWSaaVDqTgJvJTmBziTM0G+ttIca7GzoI3wKlkPy0Of/mtt6bbbmbC6VyazMvuqt+nEDfdBR6Uo/wAgbHQ0KZW5kc3RyZWFtCmVuZG9iago3IDAgb2JqCjw8Ci9TIC9UcmFuc3BhcmVuY3kKL0NTIC9EZXZpY2VSR0IKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0xlbmd0aCA0NwovRmlsdGVyIC9GbGF0ZURlY29kZQo+PgpzdHJlYW0NCnicK+QyVDAAQgiZnMsFoowsLBRMjI0UilK5wrnyuPTd8otyDRVc8rkCuQDpYgo5DQplbmRzdHJlYW0KZW5kb2JqCjkgMCBvYmoKPDwKL1R5cGUgL0V4dEdTdGF0ZQovQk0gL0RpZmZlcmVuY2UKPj4KZW5kb2JqCjEwIDAgb2JqCjw8Ci9GMSAxMSAwIFIKPj4KZW5kb2JqCjExIDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9CYXNlRm9udCAvQUFBQVZVK0ZvbnQxCi9TdWJ0eXBlIC9UeXBlMAovRW5jb2RpbmcgL0lkZW50aXR5LUgKL0Rlc2NlbmRhbnRGb250cyBbMTIgMCBSXQovVG9Vbmljb2RlIDEzIDAgUgo+PgplbmRvYmoKMTIgMCBvYmoKPDwKL1R5cGUgL0ZvbnQKL1N1YnR5cGUgL0NJREZvbnRUeXBlMgovQmFzZUZvbnQgL0FBQUFWVStGb250MQovQ0lEU3lzdGVtSW5mbyAxNCAwIFIKL0ZvbnREZXNjcmlwdG9yIDE1IDAgUgovVyBbMCBbNjY3XQogMyBbNjY3XQogNDMgWzY2N10KIDU4IFs2NjddCiA3MSBbNjY3IDY2N10KNzkgWzY2N10KIDgyIFs2NjddCiA4NSBbNjY3XQpdCi9DSURUb0dJRE1hcCAxNiAwIFIKPj4KZW5kb2JqCjEzIDAgb2JqCjw8Ci9MZW5ndGggMjc0Ci9GaWx0ZXIgL0ZsYXRlRGVjb2RlCj4+CnN0cmVhbQ0KeJxdUctqwzAQvOsrdEwPwYnjRw/GkLgYfOiDuv0AW1obQS0JWT747yvvJi50QQw7mhGr2ahqXhqtPI8+nBEteD4oLR3MZnECeA+j0uwcc6mEv3cMQUydZVFwt+vsYWr0YFhR8OgzXM7erfxwlaaHJxa9OwlO6ZEfvqs29O1i7Q9MoD0/sbLkEgYWXnrt7Fs3AY/Qd2xkECi/HoMJJaj4Wi3wmCxnmkcYCbPtBLhOj8CKU6iSF3WokoGW/+5ZTrZ++NNfgn6H+FRuZHyjjiB5RvJyxe4OaY5kkj8kG2QJkTWRBFmFZBqTjyCriUyJJMhjHPoxHX5gS3qPRyzOhWRwHxjJFobSsK/MGru58PwC1m2Kgw0KZW5kc3RyZWFtCmVuZG9iagoxNCAwIG9iago8PAovUmVnaXN0cnkgKEFkb2JlKQovT3JkZXJpbmcgKElkZW50aXR5KQovU3VwcGxlbWVudCAwCj4+CmVuZG9iagoxNSAwIG9iago8PAovVHlwZSAvRm9udERlc2NyaXB0b3IKL0ZvbnROYW1lIC9BQUFBVlUrRm9udDEKL0ZsYWdzIDUKL0ZvbnRXZWlnaHQgNDAwLjAKL0l0YWxpY0FuZ2xlIDAuMAovRm9udEJCb3ggWy0xMC43NDIxODc1IC0yNzYuODU1NDcgNjc3LjI0NjEgMTAzOC41NzQyXQovQXNjZW50IDkyOC4yMjI2NgovRGVzY2VudCAtMjM1LjgzOTg0Ci9DYXBIZWlnaHQgNzcyLjk0OTIKL1hIZWlnaHQgNTgwLjA3ODEKL1N0ZW1WIDg5LjQzODQ4Ci9Gb250RmlsZTIgMTcgMCBSCi9DSURTZXQgMTggMCBSCj4+CmVuZG9iagoxNiAwIG9iago8PAovTGVuZ3RoIDMzCi9GaWx0ZXIgL0ZsYXRlRGVjb2RlCj4+CnN0cmVhbQ0KeJxjYAADRgbqAia8ssw4ZVgYWFH4bGCSHUxyAAAEIgAlDQplbmRzdHJlYW0KZW5kb2JqCjE3IDAgb2JqCjw8Ci9MZW5ndGggMzEyOAovRmlsdGVyIC9GbGF0ZURlY29kZQovTGVuZ3RoMSA1NDI0Cj4+CnN0cmVhbQ0KeJytWHtsHMUZn9nX+W2f7bPTnAl7XtsJvj07sRNjEhNfbn02xHFwErvcAsF7sZ24JCkhpGD6SEN5BaPwEDRSKlWVWogqoGLWJg9AFYEEFQqijVoB5Z8qpCgpVaUWqYKU2O7v272zHYipKvXOt/Obb34z873m210zzhjLY/uYzPTBu/bohXyxgOR5/NZu3bVtZ8+Jiy3AnzNWOLktfecu4BLGitBnOdt23LP1HytfzmWsGF3lxMhweqjyZ28ZjJWdgKBlBIKCN+QB9IlfM7Jzz2jBanaWsfIq9Ct23D6YBh7Bbzn6S3amR3fJxcU/Rf8W9PVdu4d33fbr936J/vfRH2fzf97F9zA7rDUypu1WnmZsqk1bN30G+LXpM1Mx1uR/tXXSKfyOMCaYqQvWn0raui6WOFv1sf6UkGrTL+WwHDY4aGwJRyKC2YJZRsc448xyEjHBTaE7W2NCMo2IEYkJ2dSHJuTyEEtYoszSHSfhSuVWwq2VLSFZfaO6KDAArPSQUHpHxyVJwjIiMlwVIel4UYgnqnRAIzFexsswZgjWmxq2xyu45G2omEKOipCVov1EhWVlCGF9SBcneoVSd9P4El5oJQeTQkumIkKutTfenAI5PJbSRW8vRHGwRSuhVtvWXZ8NjZZAlOnpYimNLyXmid6UDm+MpXWR15tyINFpLI9QC6EWJ+zYth2Gt0SBNSjYxpRg3USOoB/uFosILepOHy9hg8Q4rrIttj2UtgWP2nbGAlsfgj1Gwo4J1dShgVKbhk0BqzclAkZC5BgJRABTnJjQPHfDE/qQG9iS0GmQzA376tNVSE5yUKj1EQxa+pg+hr3cpWotPLQh5fSG0xvtlGFHbF3EN6UwFia/ZFSJiYApcq3oOJP8MOegayQM5IeRSAtpy1bBB6GICNTHRK6pk7ZFMEthW3RaQcQdmyhOh6dtnjmeW8SsZKI+MpM4+ealiVTgr8KjUMGC6Y6eHDPSFFTP2SxMARF6GEpmtURojXSHv0XhPNNFDWax8KxpcycVmZ5BE4UFTE5il7ARseuRxMWmK0lJMZTuiIkSE1QciGJrLS0AgAiJEuptRK/Ei1cQC5V4TtHhg0HsLIKWo485ugjCbTFRanb3pVxlqMOuEYXDxmhMlJndG1Ldm3xhOAJ5mScvN11WavWn3NJSS/B0QgSjdOSQWgm3mC4luAhegVjItb0pl9wHexNjiDC2LamPGJiWxWF/nKbgJJPEhiVd0L8L0kuDNU8IXdQqA/6yBFs9zjn3ohUymcukZF9KlBoJPSmKkH6FONhOQneOLVjAWZCVsUQiQR4oxxhPu+U5UfFINFwNd1XAxlA0JipNl1O7AP6m9humK1O70HQVasOmq1JbZboatVeYboDaRaabQ+2VpptLbdQ0sv4XmgNPG3qD4JvptMSEOWewYmbwDn8wNmewbmZwtz+om0wUR+e1E0Yd8U0lO+faF4F9OvSqhn3UGrCP2hrYR20t7KO2DvZRuxj2UbsE9lF7Feyjth72Udtg6m1ewjaa2HaBo6PoccfyQopD2EA5u9QUjVHRiPO4DEehS58nmka61aDC/rWMMFnflA2xW6QlKePEsnpX5aFkCkWRrGye4575OMtNfYWn+Qqs5nOSX90Tx/ayupCcVbzo3c46Vhut7nIeIltb4A8YcHn9cVjSrTFxtdlQ2RYTrf+NisQeBP0ahIhV1OoNeheVBLj2+rGxLqMLNSSFGx+qLu5IrZyHyuHhlahdFaISNAXltNajuQUsIfKt6PBYg6HrbWNYc9WlNL3BX09oRiLL1oVDNSW+ITWh6KoenlDq1IV2giptHoq24c0wOh2hWV8+rg5VO/+upFjOkCFU3FQxrFjpMLBDle7Lc9JQDfXf6ESMDezQSXesPMvbBetdZhPDr6kaigiCoSLh1K+sihVJiVpSQsY1U0ln90IitGV9oUOq1mV8YbTBTdfODIk8b7zT6KJNKYqrZ1xIxvieFqwv1aC34YZO2meEOumVCYXQatG7fu6zix/Ey2V7JloGpXz7HE2sbLgcesD5ssnZEMdRPxrIi52i0kr1hnFP1dvsBncpL8e5XXPJ6MZw7yWjicvO/boZlilWRr9uww5TrIqOQTfKMRg1LxUBbRBLMSPpmUz5Wed7Po0HtIRvOiWogePTgJPnr99punm412Sn/I8p3fX/ymKyiepYm4FSNSdfInZGzy4U4JXRrFeuQ29VNGJk/JKxZsYF18MFIf/Y42kEJ7ysQbTglK+dR96N5Xh5mbgaeJ0prkHTQ15Mwt16J268WW+tNymhRQ/gDSYe1TsBegE4gQ3mOPckGwE8ySbidAH0EYdAP3EIfJM4BG40J1ALLaAUEPeQbU5wX3YTkC+7mXic0C3E89Bm4nnoVuJ5aID2TAI4tCeBNO1JYAvtSWCQONcBDBGHwDBxCGwlDoFtnl4dQCOeXoS+5elF6DZPL0LbPb0I7fD0IrTT04vQtz29CN0OH7fNBHCX1xNxwDt8uAZwNznd6yXQuxP32gxnjw+J8x2PwzOcuzD52plV7/Z63oxRH9KMe3xI9O9inQzhez4kwvd9SIQfgLt6Zr29Xs+j/9CHRN/nQ6Lfi5kZwo98SIT7fEiE+8Ftn1nvAa/n0R/0IdEf8iHR92NmhvCwD4kw5kMiPGKO53tPtkILjyuSnMRLE8qgnYiKnGEh1/SOZm/WMbrFIgrT03hxldjI1EFlRH0ab8ABVh9fjDFZYvI2JnEu3cgkiQ8oQPwGxgKaqoAmB1WtMloWjARrI8HIiMIu3imHL348dTBQ9Pmnu7WrsHY73odb8Taaz9Z0i6beVDwEoSJzZZuENAn2qFyWS+X14Vk5SdiANyqvt+O5QfqUaIGqaFkzdmoOGrga7R9Ia99/f/LoB1rj5N3SwxdOS59OFjF6h2fKaexXwLYcy1MlWeZ8XbdYiI1L/Q2RfuU9SmbXWZVkxuV9PiM7GC/PyklyvzfI1tv2sdJgaWmJGghHg81hTn+ykc+NNx579g/PP/bGn199+7evao3//kLedPE5NXDhtPyri5tILYk502eURm03K2FVbO9RlUmKSsqVQIUwCGU9TFXlNJPlhT1MUXgafuelPKvllV+mYJB4UhqhWSBB3yqmYE1p+BIOG6B5HHrHc2tqaoxgkFzJyY8rirhRLQVLSpubKnh5RXNTy4rldUa1Ju84eXLZz297//ML723/xeQ/H3/0wJNPHjjwhFIgbb3w6MHUZr6e1/Fqvnbz5N/PnvvrmY/On/Pta4N9/cprLAT70vG8XGyeh3yR1vkGLNK4inRT2TZoPavgrP7hWQJH0sGQLE9BIhRVVFRUVVTV1NQawQCcz0ORkKf01SHYobNgCWtuYoEG2KQFlP6LE28f3/zOntt/l57629SbvGnqLNdOKj95/MCxEuk+R3v9j6uuPdkQ4+t4Da/ifVPvnH5+4pVn/PMwhByStb2skK3KJogkyQNQBP4HYYD5cYmX+sdncGZYWm8fDZZFqpXAwig8uoqHjOq6FcHIiojkOAN/+eyFE1O/4Rf5C/c/+MyZd5WWQ77f2uG3Vvgtn1WyjK8qFWSblFa5JHlO8tywYCYpuTw8h4CkjJcVFnBWFiyoLKwMqCyf52uBiiiv1kLZuC5uIg8Z1XSVVj116NBTBw8dOvgZ16YuXvhs6guuKuFzZz86f/6js+cOT706dXrq91MneDtfxhv5Gmz5BIrBh9AxyIbj+UGEJx8RYhTaUqgbJDvSMpQp72Fzk5Y8V05Om5O03Dvtc0XSANEoR48awTLfe14cQzjszaHVHAlaKX/Yfm/P0ddPnVr29th1e6+RX1hmfvzBpKs8fX7vQ7V1zDv70q3HX//xHdUDxW3/YsU53hvEn54sfjbTPjf9yeRb6vacG+h/dvC7Vy3oGtg5dQVjav/0J9OfqNsz8tmPpPazEfwYVTPmsDZkSDt5JPPpy/xOYTEH9Dhsw+byKPKoiv4f6K2Yy0bZIn899iKvYwfAPlw46Um6j7M3N+Ktnj+KVw7/6XWXywKJCbZQYvWEjlypFOdIeT42pErNw7mJV3Jw6LFiPnr5iVdYHF/qvYTKxTrcGr5/A56g9qeoP9ThLqH+8RzmC1iHHXYXk+jlnH2MK/H9g33ZAfociUhBTSqqP86nHxDKAbwrdUyoQxrr6GDsP1UHef8NCmVuZHN0cmVhbQplbmRvYmoKMTggMCBvYmoKPDwKL0xlbmd0aCAxMwovRmlsdGVyIC9GbGF0ZURlY29kZQo+PgpzdHJlYW0NCnic+/8fBv4AAEHGCvMNCmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDE5CjAwMDAwMDAwMDAgNjU1MzUgZg0KMDAwMDAwMDAxNSAwMDAwMCBuDQowMDAwMDAwMjMzIDAwMDAwIG4NCjAwMDAwMDAwNzggMDAwMDAgbg0KMDAwMDAwMDM1MiAwMDAwMCBuDQowMDAwMDAwNDYwIDAwMDAwIG4NCjAwMDAwMDA0OTIgMDAwMDAgbg0KMDAwMDAwMDc3OSAwMDAwMCBuDQowMDAwMDAwODMyIDAwMDAwIG4NCjAwMDAwMDA5NTIgMDAwMDAgbg0KMDAwMDAwMTAwNiAwMDAwMCBuDQowMDAwMDAxMDM5IDAwMDAwIG4NCjAwMDAwMDExNzkgMDAwMDAgbg0KMDAwMDAwMTQxMSAwMDAwMCBuDQowMDAwMDAxNzYwIDAwMDAwIG4NCjAwMDAwMDE4MzUgMDAwMDAgbg0KMDAwMDAwMjEyNiAwMDAwMCBuDQowMDAwMDAyMjMzIDAwMDAwIG4NCjAwMDAwMDU0NTEgMDAwMDAgbg0KdHJhaWxlcgo8PAovUm9vdCAxIDAgUgovSW5mbyAzIDAgUgovSUQgWzw5OUMxOEZEODk1ODFGQ0Y2RkRFOEVFNkY2OTBFQzI1RD4gPDk5QzE4RkQ4OTU4MUZDRjZGREU4RUU2RjY5MEVDMjVEPl0KL1NpemUgMTkKPj4Kc3RhcnR4cmVmCjU1MzgKJSVFT0YK
+        curl_info:
+            url: 'http://api.labelary.com/v1/printers/8dpmm/labels/4x6/'
+            content_type: application/pdf
+            http_code: 200
+            header_size: 569
+            request_size: 225
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.35382
+            namelookup_time: 0.092809
+            connect_time: 0.22204
+            pretransfer_time: 0.222985
+            size_upload: 33.0
+            size_download: 6072.0
+            speed_download: 17201.0
+            speed_upload: 93.0
+            download_content_length: -1.0
+            upload_content_length: 33.0
+            starttransfer_time: 0.353502
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 52.5.21.206
+            certinfo: {  }
+            primary_port: 80
+            local_ip: 172.20.0.9
+            local_port: 60456
+            http_version: 2
+            protocol: 1
+            ssl_verifyresult: 0
+            scheme: HTTP
+            appconnect_time_us: 0
+            connect_time_us: 222040
+            namelookup_time_us: 92809
+            pretransfer_time_us: 222985
+            redirect_time_us: 0
+            starttransfer_time_us: 353502
+            total_time_us: 353820
+    index: 0

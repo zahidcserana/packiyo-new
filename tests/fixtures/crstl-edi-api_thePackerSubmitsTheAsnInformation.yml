@@ -1,0 +1,1047 @@
+
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000208-8443
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"65df139a20ebf70af11ff224","integration_partner":"packiyo","id":"180","purchase_order_number":"PASB000208-8443","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000208-8443"},"measurements":{"weight":"0","weight_uom":"LB","volume":"154.29897143652","volume_uom":"OZ","lading_quantity":"1","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"313","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"154.29897143652","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"47","external_id":"119657000081"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"f6-CyyvzfL+dtBv1hERm+5ZUo/u1+U"'
+            x-cloud-trace-context: 789261c3a084b107cd57f74e47459edd;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:35:51 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '246'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"665607e5512ec827707901ab","request_labels_after_ms":100,"asn_status":"invalid","shipping_labels_status":"generating","messages":["Package expected but not found for identifier 119657000082"]}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2006
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.447439
+            namelookup_time: 0.065838
+            connect_time: 0.08537
+            pretransfer_time: 0.112455
+            size_upload: 806.0
+            size_download: 246.0
+            speed_download: 55.0
+            speed_upload: 181.0
+            download_content_length: 246.0
+            upload_content_length: 806.0
+            starttransfer_time: 4.447385
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 47194
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 112427
+            connect_time_us: 85370
+            namelookup_time_us: 65838
+            pretransfer_time_us: 112455
+            redirect_time_us: 0
+            starttransfer_time_us: 4447385
+            total_time_us: 4447439
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://api.crstl.so/v2/shipment'
+        headers:
+            Host: api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PACK-112T
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJlYzhjZTcyMi01NzU2LTRkMTYtYmVlYi1jMmRmZDhlYTRlMWYiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsIiwiYXVkIjoib21uaWNyc3RsIiwiYXV0aF90aW1lIjoxNzE2OTE0MTc3LCJ1c2VyX2lkIjoiem9lY2ZlTGcwT2RwaDFLQ2lZUzhPVXRzVEJXMiIsInN1YiI6InpvZWNmZUxnME9kcGgxS0NpWVM4T1V0c1RCVzIiLCJpYXQiOjE3MTY5MTQxNzgsImV4cCI6MTcxNjkxNzc3OCwiZW1haWwiOiJqYXZpQHBhY2tpeW8uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImphdmlAcGFja2l5by5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.RjFOjcFEqIGILW-3nY4YwWoZCCDKO9gqVT4PDt8TI0D4h1ZfLtgmaCFfDghANlL4lP_bPZTkdeozM2TURtNRgPTLOa7sgLm0k-3rgbQlJw4L-JPOdVODl6eb8qmOzo5-ve99D-qPFgp3CeMyePHcJHgMIAjtpojuTNa5-nI3T5j0WBnlOskm-OVek7Rn0FHXK8UgSxYvjWEio_KU48ggJw9h9m_Qfw9uuVdVV4_zI0eFl9HrFdavxe9bzOoQhu2fxBhFkbFOqQMwjRuUW1IhXSyAmZMnTxV1oLDCWShr4k8eoK1vT5m56BP2HGhJ-_7xbyQrF-2dErRlh_Ibx00H0g'
+            Accept: ''
+        body: '{"purchase_order_id":"6655496d7e83f4f8599e2f64","integration_partner":"packiyo","id":"188","purchase_order_number":"PACK-112T","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PACK-112T"},"measurements":{"weight":"0","weight_uom":"LB","volume":"290.62167721419","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"326","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"283.58225427155","volume_uom":"OZ"},"products":[{"upc":"869657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"8","uom":"EACH","price":"99","external_id":"869657000081"}]},{"id":"328","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"7.0394229426356","volume_uom":"OZ"},"products":[{"upc":"869657000082","sku":"test-product-red","name":"Test Product Red","quantity":"8","uom":"EACH","price":"78","external_id":"869657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-vTI3kG0sGyOYZ2hYSPCjQ2jiODI"'
+            x-cloud-trace-context: 3b8239f22320db9e48f160deaeeac38a
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:36:23 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560804274411bc7ca742c8","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 432
+            request_size: 2237
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.236772
+            namelookup_time: 0.03187
+            connect_time: 0.052863
+            pretransfer_time: 0.077247
+            size_upload: 1071.0
+            size_download: 172.0
+            speed_download: 40.0
+            speed_upload: 252.0
+            download_content_length: 172.0
+            upload_content_length: 1071.0
+            starttransfer_time: 4.236753
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.36.72.133
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 53390
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 77208
+            connect_time_us: 52863
+            namelookup_time_us: 31870
+            pretransfer_time_us: 77247
+            redirect_time_us: 0
+            starttransfer_time_us: 4236753
+            total_time_us: 4236772
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000001-0002
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"6532f197f2a76a689260cc82","integration_partner":"packiyo","id":"191","purchase_order_number":"PASB000001-0002","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000001-0002"},"measurements":{"weight":"0","weight_uom":"LB","volume":"1547.954919701","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"331","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"1126.0113905304","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"70","external_id":"119657000081"}]},{"id":"333","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"421.94352917066","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"288","uom":"EACH","price":"80","external_id":"119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-FQI2AUKOCA+YhFW34RxbX/ESMbk"'
+            x-cloud-trace-context: c5b77c217dcfa95a1b487ca36283306c;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:36:34 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"6656080f512ec827707901c0","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2287
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.906669
+            namelookup_time: 0.145872
+            connect_time: 0.163033
+            pretransfer_time: 0.190833
+            size_upload: 1086.0
+            size_download: 172.0
+            speed_download: 35.0
+            speed_upload: 221.0
+            download_content_length: 172.0
+            upload_content_length: 1086.0
+            starttransfer_time: 4.906649
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 43676
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 190797
+            connect_time_us: 163033
+            namelookup_time_us: 145872
+            pretransfer_time_us: 190833
+            redirect_time_us: 0
+            starttransfer_time_us: 4906649
+            total_time_us: 4906669
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000001-0003
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"658160444202048c6b454dec","integration_partner":"packiyo","id":"194","purchase_order_number":"PASB000001-0003","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000001-0003"},"measurements":{"weight":"0","weight_uom":"LB","volume":"648.40116730994","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"336","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"254.2871241918","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"94","external_id":"119657000081"}]},{"id":"338","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"394.11404311814","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"288","uom":"EACH","price":"97","external_id":"119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-bZL7JCaBA14cBu414rRk7Hz7UbE"'
+            x-cloud-trace-context: 88111661dde96f069da2938ef65d19d3;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:36:48 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"6656081d512ec827707901c5","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2287
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.962491
+            namelookup_time: 0.053948
+            connect_time: 0.073428
+            pretransfer_time: 0.107112
+            size_upload: 1086.0
+            size_download: 172.0
+            speed_download: 34.0
+            speed_upload: 218.0
+            download_content_length: 172.0
+            upload_content_length: 1086.0
+            starttransfer_time: 4.962469
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 55620
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 107075
+            connect_time_us: 73428
+            namelookup_time_us: 53948
+            pretransfer_time_us: 107112
+            redirect_time_us: 0
+            starttransfer_time_us: 4962469
+            total_time_us: 4962491
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000001-0004
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"658160444202048c6b454ded","integration_partner":"packiyo","id":"197","purchase_order_number":"PASB000001-0004","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000001-0004"},"measurements":{"weight":"0","weight_uom":"LB","volume":"245.77091208918","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"341","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"243.14236246901","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"45","external_id":"119657000081"}]},{"id":"343","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"2.628549620168","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"288","uom":"EACH","price":"52","external_id":"119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-YgkKTAZSy0F3O17zui9BCrZpqFs"'
+            x-cloud-trace-context: 9137ae6a6712483d03495dee6b5b7085;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:37:02 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"6656082b512ec827707901ca","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2287
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.396344
+            namelookup_time: 0.060051
+            connect_time: 0.082242
+            pretransfer_time: 0.114632
+            size_upload: 1086.0
+            size_download: 172.0
+            speed_download: 39.0
+            speed_upload: 247.0
+            download_content_length: 172.0
+            upload_content_length: 1086.0
+            starttransfer_time: 4.396325
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 60702
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 114603
+            connect_time_us: 82242
+            namelookup_time_us: 60051
+            pretransfer_time_us: 114632
+            redirect_time_us: 0
+            starttransfer_time_us: 4396325
+            total_time_us: 4396344
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000001-0005
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"65816ecb4202048c6b454df3","integration_partner":"packiyo","id":"200","purchase_order_number":"PASB000001-0005","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000001-0005"},"measurements":{"weight":"0","weight_uom":"LB","volume":"3617.7577797848","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"346","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"2746.5273517665","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"70","external_id":"119657000081"}]},{"id":"348","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"871.23042801827","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"288","uom":"EACH","price":"35","external_id":"119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-lxGrTlZRSKcv1Iev9N/rcuvnlFI"'
+            x-cloud-trace-context: 3497ac4abfe2dcf38ffea187edef51ae;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:37:16 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560839512ec827707901f9","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2288
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.170607
+            namelookup_time: 0.070119
+            connect_time: 0.082673
+            pretransfer_time: 0.109246
+            size_upload: 1087.0
+            size_download: 172.0
+            speed_download: 41.0
+            speed_upload: 260.0
+            download_content_length: 172.0
+            upload_content_length: 1087.0
+            starttransfer_time: 4.17052
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 38674
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 109208
+            connect_time_us: 82673
+            namelookup_time_us: 70119
+            pretransfer_time_us: 109246
+            redirect_time_us: 0
+            starttransfer_time_us: 4170520
+            total_time_us: 4170607
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000001-0006
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"65816ecb4202048c6b454df7","integration_partner":"packiyo","id":"203","purchase_order_number":"PASB000001-0006","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000001-0006"},"measurements":{"weight":"0","weight_uom":"LB","volume":"1753.8564670928","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"351","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"467.83435103417","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"88","external_id":"119657000081"}]},{"id":"353","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"1286.0221160586","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"288","uom":"EACH","price":"68","external_id":"119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-l77TrTJzaw8ETErDvoPindKOHaw"'
+            x-cloud-trace-context: 20ddaa7c311371ccec1ef3a79e06dfe7;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:37:29 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560846512ec82770790202","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2288
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 4.70113
+            namelookup_time: 0.10025
+            connect_time: 0.152751
+            pretransfer_time: 0.222833
+            size_upload: 1087.0
+            size_download: 172.0
+            speed_download: 36.0
+            speed_upload: 231.0
+            download_content_length: 172.0
+            upload_content_length: 1087.0
+            starttransfer_time: 4.701108
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 38832
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 222789
+            connect_time_us: 152751
+            namelookup_time_us: 100250
+            pretransfer_time_us: 222833
+            redirect_time_us: 0
+            starttransfer_time_us: 4701108
+            total_time_us: 4701130
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB000001-0007
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"65816ecb4202048c6b454df6","integration_partner":"packiyo","id":"206","purchase_order_number":"PASB000001-0007","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB000001-0007"},"measurements":{"weight":"0","weight_uom":"LB","volume":"3155.4498855823","volume_uom":"OZ","lading_quantity":"2","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"356","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"3109.1369575906","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"288","uom":"EACH","price":"43","external_id":"119657000081"}]},{"id":"358","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"46.312927991669","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"288","uom":"EACH","price":"71","external_id":"119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-7ZZaYSM9zhCGxFnDfCNMJGMR8U4"'
+            x-cloud-trace-context: 5060156c2711106d6aab6e06f4fe9eb2;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:37:45 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560855512ec8277079020b","request_labels_after_ms":200,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 2288
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 5.83547
+            namelookup_time: 0.049337
+            connect_time: 0.06974
+            pretransfer_time: 0.098493
+            size_upload: 1087.0
+            size_download: 172.0
+            speed_download: 29.0
+            speed_upload: 186.0
+            download_content_length: 172.0
+            upload_content_length: 1087.0
+            starttransfer_time: 5.83545
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 57064
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 98457
+            connect_time_us: 69740
+            namelookup_time_us: 49337
+            pretransfer_time_us: 98493
+            redirect_time_us: 0
+            starttransfer_time_us: 5835450
+            total_time_us: 5835470
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PASB43570
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"65fd72ffdea7d7562bb29d0b","integration_partner":"packiyo","id":"209","purchase_order_number":"PASB43570","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PASB43570"},"measurements":{"weight":"1.2015179","weight_uom":"LB","volume":"6817.2282099432","volume_uom":"OZ","lading_quantity":"7","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"361","type":"CARTON","measurements":{"weight":"0.0110231","weight_uom":"LB","volume":"2904.7322684821","volume_uom":"OZ"},"products":[{"upc":"0119657000081","sku":"test-kit-blue","name":"Test Kit Blue","quantity":"1","uom":"PACK","price":"99","external_id":"0119657000081"}]},{"id":"363","type":"CARTON","measurements":{"weight":"0.1984158","weight_uom":"LB","volume":"951.73416963547","volume_uom":"OZ"},"products":[{"upc":"0119657000082","sku":"test-kit-red","name":"Test Kit Red","quantity":"6","uom":"PACK","price":"51","external_id":"0119657000082"}]},{"id":"365","type":"CARTON","measurements":{"weight":"0.1984158","weight_uom":"LB","volume":"381.18810274261","volume_uom":"OZ"},"products":[{"upc":"0119657000082","sku":"test-kit-red","name":"Test Kit Red","quantity":"6","uom":"PACK","price":"51","external_id":"0119657000082"}]},{"id":"367","type":"CARTON","measurements":{"weight":"0.1984158","weight_uom":"LB","volume":"837.9446294884","volume_uom":"OZ"},"products":[{"upc":"0119657000082","sku":"test-kit-red","name":"Test Kit Red","quantity":"6","uom":"PACK","price":"51","external_id":"0119657000082"}]},{"id":"369","type":"CARTON","measurements":{"weight":"0.1984158","weight_uom":"LB","volume":"171.35328504227","volume_uom":"OZ"},"products":[{"upc":"0119657000082","sku":"test-kit-red","name":"Test Kit Red","quantity":"6","uom":"PACK","price":"51","external_id":"0119657000082"}]},{"id":"371","type":"CARTON","measurements":{"weight":"0.1984158","weight_uom":"LB","volume":"1160.6490477238","volume_uom":"OZ"},"products":[{"upc":"0119657000082","sku":"test-kit-red","name":"Test Kit Red","quantity":"6","uom":"PACK","price":"51","external_id":"0119657000082"}]},{"id":"373","type":"CARTON","measurements":{"weight":"0.1984158","weight_uom":"LB","volume":"409.62670682857","volume_uom":"OZ"},"products":[{"upc":"0119657000082","sku":"test-kit-red","name":"Test Kit Red","quantity":"6","uom":"PACK","price":"51","external_id":"0119657000082"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"8f-pLsKfkVnNG7HVYXmtzIuhZOZ4S0"'
+            x-cloud-trace-context: b7d53e5a403a11e16d8c0fbd32b38511;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:37:59 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '143'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560866512ec82770790233","asn_status":"invalid","shipping_labels_status":"unsupported"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 3682
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 2.810705
+            namelookup_time: 0.055507
+            connect_time: 0.074574
+            pretransfer_time: 0.09956
+            size_upload: 2487.0
+            size_download: 143.0
+            speed_download: 50.0
+            speed_upload: 885.0
+            download_content_length: 143.0
+            upload_content_length: 2487.0
+            starttransfer_time: 2.810687
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 41640
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 99514
+            connect_time_us: 74574
+            namelookup_time_us: 55507
+            pretransfer_time_us: 99560
+            redirect_time_us: 0
+            starttransfer_time_us: 2810687
+            total_time_us: 2810705
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PA1-3736815
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"662f4fc86f11a6fede955d21","integration_partner":"packiyo","id":"217","purchase_order_number":"PA1-3736815","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PA1-3736815"},"measurements":{"weight":"0.25132668","weight_uom":"LB","volume":"5239.0360624013","volume_uom":"OZ","lading_quantity":"7","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"376","type":"CARTON","measurements":{"weight":"0.01322772","weight_uom":"LB","volume":"341.34902400793","volume_uom":"OZ"},"products":[{"upc":"85000816019","sku":"test-kit-green","name":"Test Kit Green","quantity":"1","uom":"PACK","price":"45","external_id":"85000816019"}]},{"id":"378","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"3.8783582744528","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"380","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"2453.2790587747","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"382","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"140.08323269208","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"384","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"38.919716834452","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"386","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"2078.8441266544","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"388","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"182.6825451633","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"8f-19thodzGBbQ4PaCfkRAwCHCT5z0"'
+            x-cloud-trace-context: ecc015b0c8765dceb99f699e57df180c
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:38:06 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '143'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"6656086c512ec82770790261","asn_status":"invalid","shipping_labels_status":"unsupported"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 432
+            request_size: 3706
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 3.405489
+            namelookup_time: 0.049485
+            connect_time: 0.063199
+            pretransfer_time: 0.085731
+            size_upload: 2509.0
+            size_download: 143.0
+            speed_download: 41.0
+            speed_upload: 736.0
+            download_content_length: 143.0
+            upload_content_length: 2509.0
+            starttransfer_time: 3.405469
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 44050
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 85691
+            connect_time_us: 63199
+            namelookup_time_us: 49485
+            pretransfer_time_us: 85731
+            redirect_time_us: 0
+            starttransfer_time_us: 3405469
+            total_time_us: 3405489
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PA2-3736815
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"662f52586f11a6fede955d28","integration_partner":"packiyo","id":"225","purchase_order_number":"PA2-3736815","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PA2-3736815"},"measurements":{"weight":"0.25132668","weight_uom":"LB","volume":"11886.056915662","volume_uom":"OZ","lading_quantity":"7","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"391","type":"CARTON","measurements":{"weight":"0.01322772","weight_uom":"LB","volume":"2172.4033103713","volume_uom":"OZ"},"products":[{"upc":"85000816019","sku":"test-kit-green","name":"Test Kit Green","quantity":"1","uom":"PACK","price":"22","external_id":"85000816019"}]},{"id":"393","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"2063.8519770012","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"42","external_id":"85000816006"}]},{"id":"395","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"68.092064697704","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"42","external_id":"85000816006"}]},{"id":"397","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"293.6576604132","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"42","external_id":"85000816006"}]},{"id":"399","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"2337.1857171201","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"42","external_id":"85000816006"}]},{"id":"401","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"1332.2851166187","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"42","external_id":"85000816006"}]},{"id":"403","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"3618.5810694398","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"42","external_id":"85000816006"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"8f-XlPko97wiQJCSuOKekKxOGprMBg"'
+            x-cloud-trace-context: 60429200af4fd59f0e1ec32edf0db6b7;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:38:12 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '143'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560872512ec8277079026d","asn_status":"invalid","shipping_labels_status":"unsupported"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 436
+            request_size: 3706
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 3.136799
+            namelookup_time: 0.05525
+            connect_time: 0.074548
+            pretransfer_time: 0.09999
+            size_upload: 2509.0
+            size_download: 143.0
+            speed_download: 45.0
+            speed_upload: 800.0
+            download_content_length: 143.0
+            upload_content_length: 2509.0
+            starttransfer_time: 3.13678
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 44066
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 99959
+            connect_time_us: 74548
+            namelookup_time_us: 55250
+            pretransfer_time_us: 99990
+            redirect_time_us: 0
+            starttransfer_time_us: 3136780
+            total_time_us: 3136799
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://sandbox-api.crstl.so/v2/shipment'
+        headers:
+            Host: sandbox-api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PA3-3336815
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJhZDMyMDYxOS1iYzJiLTQzYTMtODhiOS1hYjJhNTMyZTMyYmUiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsLXNhbmRib3giLCJhdWQiOiJvbW5pY3JzdGwtc2FuZGJveCIsImF1dGhfdGltZSI6MTcxNjkxNDEyNSwidXNlcl9pZCI6InA1QTJLZUlEZkVWcldmcXBiRmJDcG5LcGU4bTEiLCJzdWIiOiJwNUEyS2VJRGZFVnJXZnFwYkZiQ3BuS3BlOG0xIiwiaWF0IjoxNzE2OTE0MTI2LCJleHAiOjE3MTY5MTc3MjYsImVtYWlsIjoiamF2aUBwYWNraXlvLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqYXZpQHBhY2tpeW8uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Bn2JdNpCVqVI7OhEItSmzkb2nRAhcjecP3jdqXBYT3FppqnfUH54YfMABcrHxQhx46CTk4NnuNP3b3f49f0EbVCBtTlW1DXGhwsex22_u6Qay6VkLbjO-jTpLbk9k03PArJOOcyw7nWSqMOJoQYBK-5pb5ANYF7FcdR5U2A_pnoWMhJNAIYHnQYR8VB8vuRS2S0CXLtD17aYexrnPC554KZ3SY-bb2YSy5ZS_sai1i0UpweBKwER_vpPKzGeJisxk-HgwML8XBI_mza8LoCoeeh6gBYib4QBJyxr5mQo_WeOZHk_Hq8F6HdNK7hcMnsZiRpxCU0YoI5vXiRlxtuChw'
+            Accept: ''
+        body: '{"purchase_order_id":"6646f975ca6933bed4a07273","integration_partner":"packiyo","id":"233","purchase_order_number":"PA3-3336815","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PA3-3336815"},"measurements":{"weight":"0.25132668","weight_uom":"LB","volume":"5714.0972208333","volume_uom":"OZ","lading_quantity":"7","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"406","type":"CARTON","measurements":{"weight":"0.01322772","weight_uom":"LB","volume":"528.70494846091","volume_uom":"OZ"},"products":[{"upc":"85000816019","sku":"test-kit-green","name":"Test Kit Green","quantity":"1","uom":"PACK","price":"20","external_id":"85000816019"}]},{"id":"408","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"2177.7509690938","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"410","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"1292.0010078808","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"412","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"155.93073637803","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"414","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"842.22871853511","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"416","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"296.92467426388","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]},{"id":"418","type":"CARTON","measurements":{"weight":"0.03968316","weight_uom":"LB","volume":"420.55616622082","volume_uom":"OZ"},"products":[{"upc":"85000816006","sku":"test-kit-purple","name":"Test Kit Purple","quantity":"1","uom":"PACK","price":"57","external_id":"85000816006"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"8f-nvwWpIgOjuSUqztq8VohENlY5Zc"'
+            x-cloud-trace-context: f64c7134d12cb319f347e7500d188ead
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Tue, 28 May 2024 16:38:18 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '143'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"66560878512ec82770790279","asn_status":"invalid","shipping_labels_status":"unsupported"}}'
+        curl_info:
+            url: 'https://sandbox-api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 432
+            request_size: 3707
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 2.958569
+            namelookup_time: 0.06729
+            connect_time: 0.081577
+            pretransfer_time: 0.108488
+            size_upload: 2510.0
+            size_download: 143.0
+            speed_download: 48.0
+            speed_upload: 848.0
+            download_content_length: 143.0
+            upload_content_length: 2510.0
+            starttransfer_time: 2.958549
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.107.134.94
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 38146
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 108447
+            connect_time_us: 81577
+            namelookup_time_us: 67290
+            pretransfer_time_us: 108488
+            redirect_time_us: 0
+            starttransfer_time_us: 2958549
+            total_time_us: 2958569
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://api.crstl.so/v2/shipment'
+        headers:
+            Host: api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PACK-T101911
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJlYzhjZTcyMi01NzU2LTRkMTYtYmVlYi1jMmRmZDhlYTRlMWYiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsIiwiYXVkIjoib21uaWNyc3RsIiwiYXV0aF90aW1lIjoxNzE2OTE0MTc3LCJ1c2VyX2lkIjoiem9lY2ZlTGcwT2RwaDFLQ2lZUzhPVXRzVEJXMiIsInN1YiI6InpvZWNmZUxnME9kcGgxS0NpWVM4T1V0c1RCVzIiLCJpYXQiOjE3MTY5MTQxNzgsImV4cCI6MTcxNjkxNzc3OCwiZW1haWwiOiJqYXZpQHBhY2tpeW8uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImphdmlAcGFja2l5by5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.RjFOjcFEqIGILW-3nY4YwWoZCCDKO9gqVT4PDt8TI0D4h1ZfLtgmaCFfDghANlL4lP_bPZTkdeozM2TURtNRgPTLOa7sgLm0k-3rgbQlJw4L-JPOdVODl6eb8qmOzo5-ve99D-qPFgp3CeMyePHcJHgMIAjtpojuTNa5-nI3T5j0WBnlOskm-OVek7Rn0FHXK8UgSxYvjWEio_KU48ggJw9h9m_Qfw9uuVdVV4_zI0eFl9HrFdavxe9bzOoQhu2fxBhFkbFOqQMwjRuUW1IhXSyAmZMnTxV1oLDCWShr4k8eoK1vT5m56BP2HGhJ-_7xbyQrF-2dErRlh_Ibx00H0g'
+            Accept: ''
+        body: '{"purchase_order_id":"66568f6e7e83f4f8599e334f","integration_partner":"packiyo","id":"244","purchase_order_number":"PACK-T101911","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PACK-T101911"},"measurements":{"weight":"0","weight_uom":"LB","volume":"1537.725283488","volume_uom":"OZ","lading_quantity":"4","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"426","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"1109.5582103061","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"30","uom":"EACH","price":"68","external_id":"TSETTFM1001"}]},{"id":"428","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"130.02896688447","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"30","uom":"EACH","price":"68","external_id":"TSETTFM1001"}]},{"id":"430","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"295.90386978473","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"30","uom":"EACH","price":"68","external_id":"TSETTFM1001"}]},{"id":"432","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"2.2342365127108","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"20","uom":"EACH","price":"12","external_id":"TSDPG1003"}]}]}'
+    response:
+        status:
+            code: 401
+            message: Unauthorized
+        headers:
+            www-authenticate: 'Bearer realm="https://api.crstl.so/v2/shipment", error="invalid_token"'
+            content-type: application/json
+            X-Cloud-Trace-Context: 98f69d5fa0a06a5a94b04cc6db48c900;o=1
+            Date: 'Wed, 29 May 2024 12:58:37 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '40'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: "{\"code\":401,\"message\":\"Jwt is expired\"}\n"
+        curl_info:
+            url: 'https://api.crstl.so/v2/shipment'
+            content_type: application/json
+            http_code: 401
+            header_size: 368
+            request_size: 2805
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 3.427665
+            namelookup_time: 0.18352
+            connect_time: 0.212889
+            pretransfer_time: 0.257404
+            size_upload: 1636.0
+            size_download: 40.0
+            speed_download: 11.0
+            speed_upload: 477.0
+            download_content_length: 40.0
+            upload_content_length: 1636.0
+            starttransfer_time: 3.427644
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.36.72.133
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 34928
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 257352
+            connect_time_us: 212889
+            namelookup_time_us: 183520
+            pretransfer_time_us: 257404
+            redirect_time_us: 0
+            starttransfer_time_us: 3427644
+            total_time_us: 3427665
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://api.crstl.so/v2/auth/refresh'
+        headers:
+            Host: api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjOTNjMWEyNGNhZjgyN2I4ZGRlOWY4MmQyMzE1MzY1MDg4YWU2MTIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJlYzhjZTcyMi01NzU2LTRkMTYtYmVlYi1jMmRmZDhlYTRlMWYiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsIiwiYXVkIjoib21uaWNyc3RsIiwiYXV0aF90aW1lIjoxNzE2OTE0MTc3LCJ1c2VyX2lkIjoiem9lY2ZlTGcwT2RwaDFLQ2lZUzhPVXRzVEJXMiIsInN1YiI6InpvZWNmZUxnME9kcGgxS0NpWVM4T1V0c1RCVzIiLCJpYXQiOjE3MTY5MTQxNzgsImV4cCI6MTcxNjkxNzc3OCwiZW1haWwiOiJqYXZpQHBhY2tpeW8uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImphdmlAcGFja2l5by5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.RjFOjcFEqIGILW-3nY4YwWoZCCDKO9gqVT4PDt8TI0D4h1ZfLtgmaCFfDghANlL4lP_bPZTkdeozM2TURtNRgPTLOa7sgLm0k-3rgbQlJw4L-JPOdVODl6eb8qmOzo5-ve99D-qPFgp3CeMyePHcJHgMIAjtpojuTNa5-nI3T5j0WBnlOskm-OVek7Rn0FHXK8UgSxYvjWEio_KU48ggJw9h9m_Qfw9uuVdVV4_zI0eFl9HrFdavxe9bzOoQhu2fxBhFkbFOqQMwjRuUW1IhXSyAmZMnTxV1oLDCWShr4k8eoK1vT5m56BP2HGhJ-_7xbyQrF-2dErRlh_Ibx00H0g'
+            Accept: ''
+        body: '{"refresh_token":"AMf-vBwneewJz1xl4Wu0R6FblKbD9V614-CJKTzMr2rKHiaHYGi2xV4aaMzhVW6ucKjBRb9X5oV9LmBbJ2ojB9BbEYIHRuVup-xGjDoAoFKCGmSkS0k3JW-fYCONWONQEMxy-IVzDVj8TvBZM1cACcYTBBSBDBiVMxqYLIDpolO0IaFgcRndh0XZSWQFdTeAua1PPaHV-EB7"}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"4f7-VxruvW7KiGrYNAQlPqWJxYbAge0"'
+            x-cloud-trace-context: 8930db998b26795093eabdb39a8c0cb4;o=1
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Wed, 29 May 2024 12:58:37 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '1271'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"access_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjVkNjE3N2E5Mjg2ZDI1Njg0NTI2OWEzMTM2ZDNmNjY0MjZhNGQ2NDIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJlYzhjZTcyMi01NzU2LTRkMTYtYmVlYi1jMmRmZDhlYTRlMWYiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsIiwiYXVkIjoib21uaWNyc3RsIiwiYXV0aF90aW1lIjoxNzE2OTE0MTc3LCJ1c2VyX2lkIjoiem9lY2ZlTGcwT2RwaDFLQ2lZUzhPVXRzVEJXMiIsInN1YiI6InpvZWNmZUxnME9kcGgxS0NpWVM4T1V0c1RCVzIiLCJpYXQiOjE3MTY5ODc1MTcsImV4cCI6MTcxNjk5MTExNywiZW1haWwiOiJqYXZpQHBhY2tpeW8uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImphdmlAcGFja2l5by5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.fB0NeeRLvPfvChcOJ1X1yCaNSHSqJZbmB8D8gmE4Br9fduY13CN0e4EbEkKocuR6Gce0UtQ2T4iM4UKIKNts7I8mOPCcsd_ifkM8ps7MxZpe6KfU0vw85S77z9Qx_h3hWswFB3wcI7UO8dNMVXwkk6c1aJFuvcq8xm9JCAqX9G06uqPCrb9DzBymKFpPM9-A2mYJ6qyPHMS8WXyi-epY91E9SCFGSC5UwzmmKDjZ6UVhUnTLfg8htx3tHJuAfMwzHc-taF3NBC11J_tXJCh0z7affL_aEfBTD3flElf7TuhmmBZpENESvJG7gN-tziclCcki-QB-Tpx8oBTUBUYUtA","refresh_token":"AMf-vBwneewJz1xl4Wu0R6FblKbD9V614-CJKTzMr2rKHiaHYGi2xV4aaMzhVW6ucKjBRb9X5oV9LmBbJ2ojB9BbEYIHRuVup-xGjDoAoFKCGmSkS0k3JW-fYCONWONQEMxy-IVzDVj8TvBZM1cACcYTBBSBDBiVMxqYLIDpolO0IaFgcRndh0XZSWQFdTeAua1PPaHV-EB7","access_token_expires_at":"2024-05-29T13:58:37.767Z"}'
+        curl_info:
+            url: 'https://api.crstl.so/v2/auth/refresh'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 438
+            request_size: 1357
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.478657
+            namelookup_time: 0.002356
+            connect_time: 0.054746
+            pretransfer_time: 0.123131
+            size_upload: 224.0
+            size_download: 1271.0
+            speed_download: 2658.0
+            speed_upload: 468.0
+            download_content_length: 1271.0
+            upload_content_length: 224.0
+            starttransfer_time: 0.478631
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.36.72.133
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 34934
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 123073
+            connect_time_us: 54746
+            namelookup_time_us: 2356
+            pretransfer_time_us: 123131
+            redirect_time_us: 0
+            starttransfer_time_us: 478631
+            total_time_us: 478657
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://api.crstl.so/v2/shipment'
+        headers:
+            Host: api.crstl.so
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Packiyo-Id: order_number=PACK-T101911
+            Authorization: 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjVkNjE3N2E5Mjg2ZDI1Njg0NTI2OWEzMTM2ZDNmNjY0MjZhNGQ2NDIiLCJ0eXAiOiJKV1QifQ.eyJvcmdhbml6YXRpb25faWQiOiJlYzhjZTcyMi01NzU2LTRkMTYtYmVlYi1jMmRmZDhlYTRlMWYiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb21uaWNyc3RsIiwiYXVkIjoib21uaWNyc3RsIiwiYXV0aF90aW1lIjoxNzE2OTE0MTc3LCJ1c2VyX2lkIjoiem9lY2ZlTGcwT2RwaDFLQ2lZUzhPVXRzVEJXMiIsInN1YiI6InpvZWNmZUxnME9kcGgxS0NpWVM4T1V0c1RCVzIiLCJpYXQiOjE3MTY5ODc1MTcsImV4cCI6MTcxNjk5MTExNywiZW1haWwiOiJqYXZpQHBhY2tpeW8uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImphdmlAcGFja2l5by5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.fB0NeeRLvPfvChcOJ1X1yCaNSHSqJZbmB8D8gmE4Br9fduY13CN0e4EbEkKocuR6Gce0UtQ2T4iM4UKIKNts7I8mOPCcsd_ifkM8ps7MxZpe6KfU0vw85S77z9Qx_h3hWswFB3wcI7UO8dNMVXwkk6c1aJFuvcq8xm9JCAqX9G06uqPCrb9DzBymKFpPM9-A2mYJ6qyPHMS8WXyi-epY91E9SCFGSC5UwzmmKDjZ6UVhUnTLfg8htx3tHJuAfMwzHc-taF3NBC11J_tXJCh0z7affL_aEfBTD3flElf7TuhmmBZpENESvJG7gN-tziclCcki-QB-Tpx8oBTUBUYUtA'
+            Accept: ''
+        body: '{"purchase_order_id":"66568f6e7e83f4f8599e334f","integration_partner":"packiyo","id":"244","purchase_order_number":"PACK-T101911","carrier":{"name":"Generic","transportation_method_type_code":"MOTOR","scac":"FDXE","tracking_number":"TN-PACK-T101911"},"measurements":{"weight":"0","weight_uom":"LB","volume":"1537.725283488","volume_uom":"OZ","lading_quantity":"4","lading_quantity_uom":"CARTON"},"dates":{"shipped_date":"2023-11-27","estimated_delivery_date":"2023-11-27"},"terms":{"payment":"COLLECT"},"packages":[{"id":"426","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"1109.5582103061","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"30","uom":"EACH","price":"68","external_id":"TSETTFM1001"}]},{"id":"428","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"130.02896688447","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"30","uom":"EACH","price":"68","external_id":"TSETTFM1001"}]},{"id":"430","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"295.90386978473","volume_uom":"OZ"},"products":[{"upc":"119657000081","sku":"test-product-blue","name":"Test Product Blue","quantity":"30","uom":"EACH","price":"68","external_id":"TSETTFM1001"}]},{"id":"432","type":"CARTON","measurements":{"weight":"0","weight_uom":"LB","volume":"2.2342365127108","volume_uom":"OZ"},"products":[{"upc":"119657000082","sku":"test-product-red","name":"Test Product Red","quantity":"20","uom":"EACH","price":"12","external_id":"TSDPG1003"}]}]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+            vary: 'Accept-Encoding,Origin'
+            x-powered-by: Express
+            etag: 'W/"ac-PQV6Ai+8wkAGpz7g4sskoAXJvYU"'
+            x-cloud-trace-context: aab486d452ed8a55f81d62917b1979ca
+            alt-svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+            Date: 'Wed, 29 May 2024 12:58:41 GMT'
+            Server: 'Google Frontend'
+            Content-Length: '172'
+            Via: '1.1 google'
+            Alt-Svc: 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'
+        body: '{"status":200,"code":"success","data":{"shipment_id":"6657267f8391b238bb7335e0","request_labels_after_ms":500,"asn_status":"invalid","shipping_labels_status":"generating"}}'
+        curl_info:
+            url: 'https://api.crstl.so/v2/shipment'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 432
+            request_size: 2805
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 3.474468
+            namelookup_time: 0.002177
+            connect_time: 0.039298
+            pretransfer_time: 0.106043
+            size_upload: 1636.0
+            size_download: 172.0
+            speed_download: 49.0
+            speed_upload: 470.0
+            download_content_length: 172.0
+            upload_content_length: 1636.0
+            starttransfer_time: 3.47444
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 34.36.72.133
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.19.0.5
+            local_port: 34946
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 105965
+            connect_time_us: 39298
+            namelookup_time_us: 2177
+            pretransfer_time_us: 106043
+            redirect_time_us: 0
+            starttransfer_time_us: 3474440
+            total_time_us: 3474468
+    index: 0

@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    <IfModule mod_proxy.c>
+      RewriteEngine On
+
+      # Forward requests starting with "app" to remix port
+      RewriteRule ^(app/.*) http://%{ENV:REMIX_HOSTNAME}:%{ENV:REMIX_PORT}/$1 [P,L]
+      RewriteRule ^(assets/.*) http://%{ENV:REMIX_HOSTNAME}:%{ENV:REMIX_PORT}/$1 [P,L]
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

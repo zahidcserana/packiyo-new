@@ -1,0 +1,38 @@
+<?php
+
+use App\Enums\InvoiceStatus;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddStatusColumnToInvoiceTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->string('status')->enum([
+                InvoiceStatus::CALCULATING_STATUS->value,
+                InvoiceStatus::PENDING_STATUS->value,
+                InvoiceStatus::FAILED_STATUS->value,
+                InvoiceStatus::DONE_STATUS->value,
+            ])->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
+    }
+}

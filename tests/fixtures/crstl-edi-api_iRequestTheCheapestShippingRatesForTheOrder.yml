@@ -1,0 +1,156 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/addresses'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Authorization: 'Basic RVpUSzBlNWNmNWJhMzQ0MTRjYTM4NTg2MDlmNTVmODM2ZDA3b0QydmNJcUE2UDIyYTMyOEhWdklSQTo='
+            Accept: ''
+        body: '{"name":"New York","company":"","street1":"123 West 45th Street","street2":"","city":"New York","state":"NY","zip":"10036","country":"US","phone":"","email":"","verify":["delivery"]}'
+    response:
+        status:
+            code: 201
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: b79b618b6698007aef8b5ce9004d4436
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/addresses/adr_b8db64d3446211efb46aac1f6bc539aa
+            content-type: 'application/json; charset=utf-8'
+            content-length: '552'
+            x-runtime: '0.092841'
+            x-node: bigweb33nuq
+            x-version-label: easypost-202407171657-cb7d9cc132-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq 4e1e840afe', 'extlb2nuq fa152d4755']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"adr_b8db64d3446211efb46aac1f6bc539aa","object":"Address","created_at":"2024-07-17T17:33:47+00:00","updated_at":"2024-07-17T17:33:47+00:00","name":"NEW YORK","company":null,"street1":"123 W 45TH ST","street2":"","city":"NEW YORK","state":"NY","zip":"10036-4004","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":40.75703,"longitude":-73.98334,"time_zone":"America/New_York"}}}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/addresses'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 759
+            request_size: 419
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.713001
+            namelookup_time: 0.024679
+            connect_time: 0.220537
+            pretransfer_time: 0.42299
+            size_upload: 182.0
+            size_download: 552.0
+            speed_download: 774.0
+            speed_upload: 255.0
+            download_content_length: 552.0
+            upload_content_length: 182.0
+            starttransfer_time: 0.712981
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.21.0.4
+            local_port: 43010
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 422957
+            connect_time_us: 220537
+            namelookup_time_us: 24679
+            pretransfer_time_us: 422990
+            redirect_time_us: 0
+            starttransfer_time_us: 712981
+            total_time_us: 713001
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/beta/rates'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            User-Agent: GuzzleHttp/7
+            Content-Type: application/json
+            Authorization: 'Basic RVpUSzBlNWNmNWJhMzQ0MTRjYTM4NTg2MDlmNTVmODM2ZDA3b0QydmNJcUE2UDIyYTMyOEhWdklSQTo='
+            Accept: ''
+        body: '{"shipment":{"to_address":{"name":"New York","company":"","street1":"123 West 45th Street","street2":"","city":"New York","state":"NY","zip":"10036","country":"US","phone":"","email":"","verify":["delivery"],"residential":false},"from_address":{"name":"Test Warehouse","company":"Test Warehouse","street1":"90 Belford Street","street2":"12779396","city":"New York","state":"NY","zip":"10014","country":"US","phone":"9141745590","email":"","federal_tax_id":"67"},"parcel":{"length":"6.0300","width":"15.8900","height":"47.3200","weight":1},"customs_info":{"customs_certify":"true","customs_signer":null,"contents_type":null,"contents_explanation":null,"restriction_type":"none","eel_pfc":null,"customs_items":[{"description":"Test Product Green","quantity":2,"value":40,"weight":"1","hs_tariff_number":"","code":"test-product-green","origin_country":"US","currency":"USD","shipping_cost":1}]}}}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: b79b61876698007bef8b5cef004d44f9
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '6428'
+            x-runtime: '2.812663'
+            vary: Origin
+            x-node: bigweb43nuq
+            x-version-label: easypost-202407171657-cb7d9cc132-master
+            x-backend: easypost
+            x-canary: direct
+            x-proxied: ['intlb4nuq 4e1e840afe', 'extlb2nuq fa152d4755']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"from_address":{"object":"Address","name":"Test Warehouse","company":"Test Warehouse","street1":"90 Belford Street","street2":"12779396","city":"New York","state":"NY","zip":"10014","country":"US","phone":"9141745590","federal_tax_id":"67"},"to_address":{"object":"Address","name":"New York","street1":"123 West 45th Street","city":"New York","state":"NY","zip":"10036","country":"US"},"rates":[{"object":"Rate","mode":"test","service":"Priority","carrier":"USPS","rate":"74.98","currency":"USD","retail_rate":"82.80","retail_currency":"USD","list_rate":"74.98","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"carrier_account_id":"ca_4667b7a85d674fb989ff57bcdb8a2ea6"},{"object":"Rate","mode":"test","service":"GroundAdvantage","carrier":"USPS","rate":"49.71","currency":"USD","retail_rate":"56.45","retail_currency":"USD","list_rate":"49.71","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"carrier_account_id":"ca_4667b7a85d674fb989ff57bcdb8a2ea6"},{"object":"Rate","mode":"test","service":"Express","carrier":"USPS","rate":"132.20","currency":"USD","retail_rate":"143.95","retail_currency":"USD","list_rate":"132.20","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"carrier_account_id":"ca_4667b7a85d674fb989ff57bcdb8a2ea6"},{"object":"Rate","mode":"test","service":"PRIORITY_OVERNIGHT","carrier":"FedExDefault","rate":"120.75","currency":"USD","retail_rate":null,"retail_currency":null,"list_rate":"120.75","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":"2024-07-18T10:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":1,"carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804"},{"object":"Rate","mode":"test","service":"STANDARD_OVERNIGHT","carrier":"FedExDefault","rate":"112.61","currency":"USD","retail_rate":null,"retail_currency":null,"list_rate":"112.61","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":"2024-07-18T17:00:00Z","delivery_date_guaranteed":true,"est_delivery_days":1,"carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804"},{"object":"Rate","mode":"test","service":"FEDEX_GROUND","carrier":"FedExDefault","rate":"27.06","currency":"USD","retail_rate":null,"retail_currency":null,"list_rate":"27.06","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":"2024-07-18T23:59:00Z","delivery_date_guaranteed":true,"est_delivery_days":1,"carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804"},{"object":"Rate","mode":"test","service":"FEDEX_2_DAY_AM","carrier":"FedExDefault","rate":"91.16","currency":"USD","retail_rate":null,"retail_currency":null,"list_rate":"91.16","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":"2024-07-19T10:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":2,"carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804"},{"object":"Rate","mode":"test","service":"FEDEX_2_DAY","carrier":"FedExDefault","rate":"80.08","currency":"USD","retail_rate":null,"retail_currency":null,"list_rate":"80.08","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":"2024-07-19T17:00:00Z","delivery_date_guaranteed":true,"est_delivery_days":2,"carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804"},{"object":"Rate","mode":"test","service":"FEDEX_EXPRESS_SAVER","carrier":"FedExDefault","rate":"76.10","currency":"USD","retail_rate":null,"retail_currency":null,"list_rate":"76.10","list_currency":"USD","billing_type":"easypost","delivery_days":5,"delivery_date":"2024-07-22T17:00:00Z","delivery_date_guaranteed":true,"est_delivery_days":5,"carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804"}],"options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"parcel":{"object":"Parcel","length":6.03,"width":15.89,"height":47.32,"weight":1.0},"messages":[{"carrier":"ParcelForce","carrier_account_id":"ca_5dae29bd06bd4c78845b3b26e424a058","type":"rate_error","message":"Unable to retrieve ParcelForce rates for non-GB origin address."},{"carrier":"Canpar","carrier_account_id":"ca_c3bd13bc2bea4cd1a70da72b3ea97918","type":"rate_error","message":"Unable to retrieve Canpar rates for non-CA origin shipments."},{"carrier":"LoomisExpress","carrier_account_id":"ca_d7c2328d04b84ff2b31b0bca655a8856","type":"rate_error","message":"Unable to retrieve LoomisExpress rates for non-CA origin address."},{"carrier":"DPD","carrier_account_id":"ca_2c514ffc945e4f59a75e2d4c73854038","type":"rate_error","message":"credentials.password: Required and credentials.username: Required"},{"carrier":"CanadaPost","carrier_account_id":"ca_e9f85211fa164ea08c0e8e494d39be5d","type":"rate_error","message":"[''Unable to get rates for shipments originating outside of Canada.'']"},{"type":"rate_error","carrier":"Purolator","message":"shipment.from_address.country: All shipments must originate in Canada (CA)."},{"type":"rate_error","carrier":"Purolator","message":"shipment.return_address.country: All shipments must originate in Canada (CA)."},{"carrier":"DPDUK","carrier_account_id":"ca_d5b11d55de0a4db6bffa700bb58295d5","type":"rate_error","message":"credentials.username: field required, credentials.password: field required, and credentials.account_number: field required"},{"carrier":"CirroECommerce","carrier_account_id":"ca_00f364cdeb32471f92528ce226617b05","type":"rate_error","message":"credentials.user_id: field required, credentials.api_key: field required, and credentials.origin_hub: field required"},{"type":"rate_error","carrier":"SpeeDee","message":"shipment.from_address: zip not serviced by Spee-Dee"},{"type":"rate_error","carrier":"SpeeDee","message":"shipment.parcel.weight: 0.0625 is less than minimum value 0.1000000000000000055511151231257827021181583404541015625"},{"type":"rate_error","carrier":"SpeeDee","message":"shipment.return_address: zip not serviced by Spee-Dee"},{"type":"rate_error","carrier":"SpeeDee","message":"shipment.to_address: zip not serviced by Spee-Dee"},{"carrier":"FedExDefault","carrier_account_id":"ca_e513e20e16624b988fae3dcd457f3804","type":"rate_error","message":"FedEx returned error: Package 1 - Dimensions exceed  length and girth limit of 84 IN allowed for the  origin .  "}]}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/rates'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 721
+            request_size: 1128
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 3.43915
+            namelookup_time: 0.030223
+            connect_time: 0.226267
+            pretransfer_time: 0.42768
+            size_upload: 893.0
+            size_download: 6428.0
+            speed_download: 1869.0
+            speed_upload: 259.0
+            download_content_length: 6428.0
+            upload_content_length: 893.0
+            starttransfer_time: 3.43913
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.21.0.4
+            local_port: 43016
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 427646
+            connect_time_us: 226267
+            namelookup_time_us: 30223
+            pretransfer_time_us: 427680
+            redirect_time_us: 0
+            starttransfer_time_us: 3439130
+            total_time_us: 3439150
+    index: 0

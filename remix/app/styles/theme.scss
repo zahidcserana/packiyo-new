@@ -1,0 +1,618 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$purple: #5e39cc;
+$grey: #eee;
+$lightGrey: #ccc;
+$borderColor: #efefef;
+$bgColor: #f8f8f8;
+$borderRadius: 8px;
+$transitionSpeed: 300ms;
+$lightGreen: #c3ddc5;
+$lightPurple: #e9dcfe;
+$darkerPurple: #d8c7f4;
+$textColor: #212222;
+
+p,
+span {
+    color: $textColor;
+}
+hr {
+    color: $lightGrey;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/inter-variable.ttf") format("ttf");
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+body {
+    background: #f8f8f8;
+    font-family: Inter, serif !important;
+    font-size: 16px !important;
+}
+
+a {
+    color: $purple;
+}
+
+@function hex-to-rgba($hex, $alpha: 1) {
+    $red: red($hex);
+    $green: green($hex);
+    $blue: blue($hex);
+
+    @return rgba($red, $green, $blue, $alpha);
+}
+
+@mixin custom-button(
+    $bg-color,
+    $text-color,
+    $shadow: null,
+    $hover-color: null
+) {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: #{$text-color} !important;
+    --bs-btn-bg: #{$bg-color} !important;
+    --bs-btn-border-color: #{$bg-color} !important;
+    --bs-btn-hover-color: #{$text-color} !important;
+    --bs-btn-hover-bg: #{shade-color($bg-color, 10%)} !important;
+    --bs-btn-hover-border-color: #{shade-color($bg-color, 10%)};
+    --bs-btn-focus-shadow-rgb: #{$bg-color};
+    --bs-btn-active-color: #{$bg-color};
+    --bs-btn-active-bg: #{shade-color($bg-color, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bg-color, 20%)};
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #{$bg-color};
+    --bs-btn-disabled-border-color: #{$bg-color};
+
+    @if $shadow != null {
+        box-shadow: 0 0 10px hex-to-rgba($shadow, 0.5);
+    }
+
+    @if $shadow == null {
+        box-shadow: none;
+    }
+
+    @if $hover-color != null {
+        --bs-btn-hover-color: #{$text-color} !important;
+        --bs-btn-hover-bg: #{shade-color($hover-color, 10%)} !important;
+        --bs-btn-hover-border-color: #{shade-color($hover-color, 10%)};
+    }
+}
+
+@mixin custom-badge-button($bg-color, $text-color, $shadow: null) {
+    --bs-btn-font-weight: 400;
+    --bs-btn-color: #{$text-color} !important;
+    --bs-btn-bg: #{tint-color($bg-color, 30%)} !important;
+    --bs-btn-border-color: #{tint-color($bg-color, 30%)} !important;
+    --bs-btn-hover-color: #{$text-color} !important;
+    --bs-btn-hover-bg: #{$bg-color} !important;
+    --bs-btn-hover-border-color: #{$bg-color};
+    --bs-btn-focus-shadow-rgb: #{$bg-color};
+    --bs-btn-active-color: #{$text-color};
+    --bs-btn-active-bg: #{tint-color($bg-color, 30%)} !important;
+    --bs-btn-active-border-color: #{tint-color($bg-color, 30%)} !important;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #{$bg-color};
+    --bs-btn-disabled-border-color: #{$bg-color};
+
+    @if $shadow != null {
+        box-shadow: 0 0 10px hex-to-rgba($shadow, 0.5);
+    }
+
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+@mixin custom-input {
+    background: #fff;
+    height: auto;
+    padding: 10px 12px;
+    border-radius: $borderRadius;
+
+    &:focus {
+        border-color: $purple;
+        box-shadow: 0 0 5px hex-to-rgba($purple, 0.5);
+    }
+}
+
+@mixin custom-select {
+    height: auto;
+    padding: 10px 12px;
+    border-radius: $borderRadius;
+
+    &:focus {
+        border-color: $purple;
+        box-shadow: 0 0 5px hex-to-rgba($purple, 0.5);
+    }
+}
+
+@mixin custom-card {
+    border-width: 0;
+    border-radius: 8px !important;
+    box-shadow: 0 0 30px hex-to-rgba($lightGrey, 0.5);
+    overflow: hidden !important;
+}
+
+@mixin custom-toogle {
+    font-size: 1.5rem;
+    line-height: 1.5;
+
+    .form-check-input {
+        &:checked {
+            background-color: $purple;
+            border-color: $purple;
+        }
+
+        &:focus:not(:checked) {
+            background-color: hex-to-rgba($purple, 0.2);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+            border-color: $purple;
+            box-shadow: 0 0 5px hex-to-rgba($purple, 0.5);
+        }
+
+        &:focus:checked {
+            box-shadow: 0 0 5px hex-to-rgba($purple, 0.5);
+        }
+    }
+}
+
+@mixin custom-dropdown-menu {
+    border: none;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+    border-radius: $borderRadius;
+}
+
+.form-switch {
+    @include custom-toogle;
+}
+
+.form-control {
+    @include custom-input;
+}
+
+.with-icon {
+    position: relative;
+
+    .form-control {
+        padding-left: 34px;
+    }
+
+    svg {
+        position: absolute;
+        left: 10px;
+        top: 12px;
+    }
+}
+
+.form-select {
+    @include custom-select;
+}
+
+@mixin custom-check-input {
+    .form-check-input {
+        &:checked {
+            background-color: $purple;
+            border-color: $purple;
+            box-shadow: none;
+        }
+    }
+}
+
+.form-check {
+    @include custom-check-input;
+}
+
+.card {
+    @include custom-card;
+}
+
+.dropdown-menu {
+    @include custom-dropdown-menu;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: $borderRadius;
+    font-size: 16px;
+
+    &.btn-sm {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+        padding: 2px 4px;
+        border-radius: $borderRadius;
+    }
+}
+
+.btn-primary {
+    @include custom-button($purple, white, $purple);
+}
+
+.btn-secondary {
+    @include custom-button(white, black, $lightGrey);
+}
+
+.btn-transparent {
+    @include custom-button(white, black, null, $lightPurple);
+}
+
+.btn-grey-purple {
+    @include custom-button($grey, black, null, $lightPurple);
+}
+
+.btn-badge {
+    @include custom-badge-button(white, black, $lightGrey);
+}
+
+.btn-badge-green {
+    @include custom-badge-button($lightGreen, "222");
+}
+
+.btn-transparent {
+    @include custom-button(white, black, null, $lightPurple);
+}
+
+.btn-grey-purple {
+    @include custom-button($grey, black, null, $lightPurple);
+}
+
+.btn-purple-darker-purple {
+    @include custom-button($lightPurple, black, null, $darkerPurple);
+}
+
+.btn-badge {
+    @include custom-badge-button(white, black, $lightGrey);
+}
+
+.btn-badge-green {
+    @include custom-badge-button($lightGreen, "222");
+}
+
+.card-header .card-title {
+    display: flex;
+    margin: 0;
+}
+
+.card-header,
+.modal-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+}
+
+.header {
+    background: #fff;
+    width: calc(100% - 300px);
+    height: 80px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-bottom: solid 1px $borderColor;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+    .profile-image {
+        border: 2px solid $purple;
+    }
+
+    @media (max-width: 992px) {
+        width: 100%;
+    }
+}
+
+.sidebar {
+    background: #fff;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    border-right: solid 1px $borderColor;
+    z-index: 1;
+
+    .logo {
+        display: block;
+        width: 100%;
+        height: 80px;
+        border-bottom: solid 1px $borderColor;
+        text-align: center;
+        position: relative;
+
+        &:before {
+            content: "V2";
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            color: #999;
+            font-size: 10px;
+            line-height: 10px;
+        }
+    }
+
+    .accounts-menu {
+        padding: 20px;
+        border-bottom: solid 1px $borderColor;
+    }
+
+    .side-menu {
+        padding: 20px;
+
+        a {
+            color: #000;
+            transition: $transitionSpeed;
+
+            &:hover {
+                color: $purple;
+            }
+
+            &.active {
+                color: $purple;
+
+                span {
+                    color: $purple;
+                }
+            }
+
+            svg {
+                font-size: 20px;
+            }
+        }
+
+        & + .side-menu {
+            border-top: solid 1px $borderColor;
+        }
+    }
+
+    @media (max-width: 992px) {
+        z-index: 10001;
+        margin: 0 0 0 -300px;
+        transition: $transitionSpeed;
+
+        &.opened {
+            margin: 0;
+        }
+    }
+
+    .close-sidebar-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 8px 10px;
+    }
+}
+
+.side-menu-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    visibility: hidden;
+    transition: $transitionSpeed;
+
+    @media (max-width: 992px) {
+        &.opened {
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            visibility: visible;
+        }
+    }
+}
+
+.main {
+    width: calc(100% - 300px);
+    height: 100%;
+    margin-top: 80px;
+    float: right;
+
+    @media (max-width: 992px) {
+        width: 100%;
+    }
+
+    @media (min-width: 1400px) {
+        & > .container-fluid {
+            max-width: 2000px;
+        }
+    }
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.table {
+    --bs-table-striped-bg: #f9f9f9;
+    --bs-table-hover-bg: #f9f9f9;
+
+    margin: 0 !important;
+
+    th {
+        border-top: none !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    td {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-width: 0;
+    }
+
+    tbody {
+        tr {
+            background-color: #ffffff;
+            &:hover {
+                background-color: #f9f9f9;
+            }
+        }
+    }
+
+    .table-actions {
+        button + button {
+            margin: 0 0 0 10px;
+        }
+    }
+
+    &.table-mixed {
+        thead {
+            th {
+                background-color: #363636;
+                vertical-align: middle;
+                padding: 20px 8px 20px 16px;
+                font-size: 14px;
+                p,
+                span {
+                    color: #fff;
+                }
+            }
+        }
+
+        td {
+            vertical-align: middle;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        tr {
+            border-bottom: solid 1px #d9d9d9;
+        }
+    }
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    padding: 0 1.5rem !important;
+}
+
+.breadcrumbs {
+    a {
+        color: black;
+        text-decoration: none;
+        transition: $transitionSpeed;
+
+        &:hover {
+            color: $purple;
+        }
+    }
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0;
+    display: none;
+}
+
+.offcanvas {
+    --bs-offcanvas-width: 618px;
+    --bs-offcanvas-border-width: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.font-24 {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+.font-20 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.font-18 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.font-16 {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.font-13 {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 16px;
+}
+
+.vertical-separator {
+    background: #222;
+    height: 28px;
+    width: 1px;
+}
+
+.popover {
+    --bs-popover-border-width: 1px;
+    --bs-popover-border-color: white;
+    --bs-popover-border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.tooltip {
+    --bs-tooltip-bg: white;
+    --bs-tooltip-color: #222;
+    --bs-tooltip-opacity: 1;
+    --bs-tooltip-max-width: 280px;
+    border-radius: 4px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+
+    .tooltip-inner {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .btn {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        color: #222;
+        text-decoration: none;
+    }
+}
+.tooltip.tooltipBlack {
+    --bs-tooltip-bg: #343A40;
+    --bs-tooltip-color: white !important;
+    color: white !important;
+    p,
+    span {
+        color: white !important;
+    }
+}
+
+.tooltip-wrapper {
+    .tooltip-inner {
+        text-align: left;
+        padding: 8px !important;
+    }
+}
