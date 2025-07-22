@@ -26,8 +26,8 @@ class AddQuantityBackorderedSumToOrdersTable extends Migration
             ->cursor();
 
         foreach ($productCursor as $product) {
-            dump($product->sku);
-            app('product')->allocateInventory($product);
+            // dump($product->sku);
+            // app('product')->allocateInventory($product);
         }
     }
 
