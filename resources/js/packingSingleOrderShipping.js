@@ -19,7 +19,7 @@ window.PackingSingleOrderShipping = function () {
         selector: '#packing-single-order-shipping-table',
         resource: 'packing-single-order-shipping',
         ajax: {
-            url:'/packing/single_order_shipping/',
+            url:'/packing/single_order_shipping',
             data: function (data) {
                 let request = {}
                 filterForm

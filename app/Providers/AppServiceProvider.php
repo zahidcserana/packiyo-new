@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+       if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+        
         if (env('DB_LOG') == 'true') {
             DB::listen(function($query) {
                 Log::debug($query->sql, [$query->bindings, $query->time]);
