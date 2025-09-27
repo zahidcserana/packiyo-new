@@ -7,7 +7,7 @@ window.ShippedItemReport = function () {
         selector: selector,
         resource: 'shipped_item',
         ajax: {
-            url: '/report/shipped_item/data_table/',
+            url: '/report/shipped_item/data_table',
             data: function(data){
                 let request = window.serializeFilterForm(filterForm)
 
