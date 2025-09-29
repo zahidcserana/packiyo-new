@@ -7,7 +7,7 @@ window.PickerReport = function () {
         selector: selector,
         resource: 'picker',
         ajax: {
-            url: '/report/picker/data_table/',
+            url: '/report/picker/data_table',
             data: function(data){
                 let request = window.serializeFilterForm(filterForm)
 
