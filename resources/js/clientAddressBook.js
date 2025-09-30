@@ -53,6 +53,8 @@ window.AddressBook = function () {
 
         if (typeof itemId == 'undefined') {
             itemId = ''
+        } else {
+            itemId = '/' + itemId
         }
 
         $('#address-book-modal .modal-content').html(`<div class="spinner">
@@ -62,7 +64,7 @@ window.AddressBook = function () {
         $.ajax({
             type: 'GET',
             serverSide: true,
-            url: '/address_book/modal/' + itemId,
+            url: '/address_book/modal' + itemId,
             success: function (data) {
                 $('#address-book-modal > div')
                     .html(data)
