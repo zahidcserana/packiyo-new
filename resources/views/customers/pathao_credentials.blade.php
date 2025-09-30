@@ -31,13 +31,13 @@
                                     <a class="nav-link mb-sm-3 mb-md-0 d-none" id="tabs-icons-text-3-tab" href="{{ route('customers.easypost_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Easypost Credentials')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <div class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-3-tab" aria-controls="tabs-icons-text-3" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>{{__('Webshipper Credentials')}}</div>
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.webshipper_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Webshipper Credentials')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.pathao_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Pathao Credentials')}}</a>
+                                    <div class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-3-tab" aria-controls="tabs-icons-text-3" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>{{__('Pathao Credentials')}}</div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0 d-none" id="tabs-icons-text-3-tab" href="{{ route('customers.rate_cards.edit', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Rate cards')}}</a>
+                                <li class="nav-item d-none">
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.rate_cards.edit', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Rate cards')}}</a>
                                 </li>
                             </ul>
                         </div>
