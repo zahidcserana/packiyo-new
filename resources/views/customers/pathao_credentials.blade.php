@@ -31,13 +31,13 @@
                                     <a class="nav-link mb-sm-3 mb-md-0 d-none" id="tabs-icons-text-3-tab" href="{{ route('customers.easypost_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Easypost Credentials')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <div class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-3-tab" aria-controls="tabs-icons-text-3" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>{{__('Webshipper Credentials')}}</div>
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.webshipper_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Webshipper Credentials')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.pathao_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Pathao Credentials')}}</a>
+                                    <div class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-3-tab" aria-controls="tabs-icons-text-3" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>{{__('Pathao Credentials')}}</div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0 d-none" id="tabs-icons-text-3-tab" href="{{ route('customers.rate_cards.edit', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Rate cards')}}</a>
+                                <li class="nav-item d-none">
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.rate_cards.edit', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Rate cards')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -48,33 +48,45 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">{{ __('API Base URL') }}</th>
-                                            <th scope="col">{{ __('API Key') }}</th>
-                                            <th scope="col">{{ __('Order channel ID') }}</th>
+                                            <th scope="col">{{ __('Client ID') }}</th>
+                                            <th scope="col">{{ __('Client Secret') }}</th>
+                                            <th scope="col">{{ __('Store ID') }}</th>
+                                            <th scope="col">{{ __('Username') }}</th>
+                                            <th scope="col">{{ __('Password') }}</th>
                                             <th scope="col"></th>
                                         </tr>
                                         </thead>
                                         <tbody id="item_container">
-                                        @foreach($customer->webshipperCredentials as $webshipperCredential)
+                                        @foreach($customer->pathaoCredentials as $pathaoCredential)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ $webshipperCredential->api_base_url }}">
-                                                        {{ $webshipperCredential->api_base_url  }}
+                                                    <a href="{{ $pathaoCredential->api_base_url }}">
+                                                        {{ $pathaoCredential->api_base_url  }}
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    {!! $webshipperCredential->api_key !!}
+                                                    {!! $pathaoCredential->client_id !!}
                                                 </td>
                                                 <td>
-                                                    {{ $webshipperCredential->order_channel_id  }}
+                                                    {{ $pathaoCredential->client_secret  }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('customers.webshipper_credentials.edit', ['customer' => $customer, 'webshipper_credential' => $webshipperCredential]) }}" class="table-icon-button">
+                                                    {{ $pathaoCredential->username  }}
+                                                </td>
+                                                <td>
+                                                    {{ $pathaoCredential->password  }}
+                                                </td>
+                                                <td>
+                                                    {{ $pathaoCredential->store_id  }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('customers.pathao_credentials.edit', ['customer' => $customer, 'pathao_credential' => $pathaoCredential]) }}" class="table-icon-button">
                                                         <i class="picon-edit-filled icon-orange icon-lg" title="{{ __('Edit') }}"></i>
                                                     </a>
-                                                    <form action="{{ route('customers.webshipper_credentials.destroy', ['customer' => $customer, 'webshipper_credential' => $webshipperCredential]) }}" method="post" class="d-inline-block">
+                                                    <form action="{{ route('customers.pathao_credentials.destroy', ['customer' => $customer, 'pathao_credential' => $pathaoCredential]) }}" method="post" class="d-inline-block">
                                                         <input type="hidden" name="_method" value="delete">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <input type="hidden" name="id" value="{{ $webshipperCredential->id }}">
+                                                        <input type="hidden" name="id" value="{{ $pathaoCredential->id }}">
                                                         <button type="button" class="table-icon-button" data-confirm-message="{{ __('Are you sure you want to delete this credential') }}" data-confirm-button-text="{{ __('Delete') }}">
                                                             <i class="picon-trash-filled icon-orange del_icon icon-lg" title="{{ __('Delete') }}"></i>
                                                         </button>
@@ -86,7 +98,7 @@
                                     </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="{{ route('customers.webshipper_credentials.create', compact('customer')) }}" class="btn bg-logoOrange text-white my-2 px-3 py-2 font-weight-700 border-8">{{ __('Add new credentials') }}</a>
+                                    <a href="{{ route('customers.pathao_credentials.create', compact('customer')) }}" class="btn bg-logoOrange text-white my-2 px-3 py-2 font-weight-700 border-8">{{ __('Add new credentials') }}</a>
                                 </div>
                             </div>
                         </div>

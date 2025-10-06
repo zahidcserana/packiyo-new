@@ -7,6 +7,7 @@ use App\Components\Shipping\Providers\GenericShippingProvider;
 use App\Components\Shipping\Providers\EasypostShippingProvider;
 use App\Components\Shipping\Providers\WebshipperShippingProvider;
 use App\Components\Shipping\Providers\TribirdShippingProvider;
+use App\Components\Shipping\Providers\PathaoShippingProvider;
 use App\Events\OrderShippedEvent;
 use App\Exceptions\ShippingException;
 use App\Interfaces\BaseShippingProvider;
@@ -31,6 +32,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class ShippingComponent extends BaseComponent
 {
     public const SHIPPING_CARRIER_SERVICE_GENERIC = 'generic';
+    public const SHIPPING_CARRIER_SERVICE_PATHAO = 'pathao';
     public const SHIPPING_CARRIER_SERVICE_EASYPOST = 'easypost';
     public const SHIPPING_CARRIER_SERVICE_WEBSHIPPER = 'webshipper';
     public const SHIPPING_CARRIER_SERVICE_TRIBIRD = 'tribird';
@@ -41,6 +43,7 @@ class ShippingComponent extends BaseComponent
         ShippingComponent::SHIPPING_CARRIER_SERVICE_GENERIC => GenericShippingProvider::class,
         ShippingComponent::SHIPPING_CARRIER_SERVICE_EASYPOST => EasypostShippingProvider::class,
         ShippingComponent::SHIPPING_CARRIER_SERVICE_WEBSHIPPER => WebshipperShippingProvider::class,
+        ShippingComponent::SHIPPING_CARRIER_SERVICE_PATHAO => PathaoShippingProvider::class,
         ShippingComponent::SHIPPING_CARRIER_SERVICE_TRIBIRD => TribirdShippingProvider::class,
         ShippingComponent::SHIPPING_CARRIER_SERVICE_EXTERNAL => ExternalCarrierShippingProvider::class,
     ];
@@ -172,9 +175,11 @@ class ShippingComponent extends BaseComponent
         $easypostRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_EASYPOST, $order, $input, $params);
         $tribirdRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_TRIBIRD, $order, $input, $params);
         $webshipperRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_WEBSHIPPER, $order, $input, $params);
+        $pathaoRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_PATHAO, $order, $input, $params);
 
         $rates = $this->mergeShippingProviderRates($easypostRates, $tribirdRates);
         $rates = $this->mergeShippingProviderRates($rates, $webshipperRates);
+        $rates = $this->mergeShippingProviderRates($rates, $pathaoRates);
 
         return array_merge(['cheapest_rate' => $this->getCheapestRate($rates)], $rates);
     }
@@ -207,10 +212,11 @@ class ShippingComponent extends BaseComponent
         $easypostCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_EASYPOST, $order, $input, $params);
         $tribirdCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_TRIBIRD, $order, $input, $params);
         $webshipperCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_WEBSHIPPER, $order, $input, $params);
-
+        $pathaoCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_PATHAO, $order, $input, $params);
         $rates = $this->getComparedCheapestShippingRates($easypostCheapestRates, $tribirdCheapestRates);
 
-        return $this->getComparedCheapestShippingRates($rates, $webshipperCheapestRates);
+        $rates = $this->getComparedCheapestShippingRates($rates, $webshipperCheapestRates);
+        return $this->getComparedCheapestShippingRates($rates, $pathaoCheapestRates);
     }
 
     /**
@@ -328,6 +334,14 @@ class ShippingComponent extends BaseComponent
 
                 if ($order->customer->parent_id) {
                     $params['credentials'] = $params['credentials']->merge($order->customer->parent->webshipperCredentials);
+                }
+
+                break;
+            case self::SHIPPING_CARRIER_SERVICE_PATHAO:
+                $params['credentials'] = $order->customer->pathaoCredentials;
+
+                if ($order->customer->parent_id) {
+                    $params['credentials'] = $params['credentials']->merge($order->customer->parent->pathaoCredentials);
                 }
 
                 break;

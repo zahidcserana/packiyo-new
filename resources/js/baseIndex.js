@@ -223,7 +223,7 @@ window.BaseIndex = function () {
                                 $.ajax({
                                     type: 'GET',
                                     serverSide: true,
-                                    url: '/edit_columns/update/',
+                                    url: '/edit_columns/update',
                                     data: {
                                         'orderColumn': orderColumn,
                                         'orderDirection': orderDirection,

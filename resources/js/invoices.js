@@ -3,7 +3,7 @@ window.Invoices = function () {
         selector: '#invoices-table',
         resource: 'invoices',
         ajax: {
-            url: '/bulk_invoice_batches/data_table/'
+            url: '/bulk_invoice_batches/data_table'
         },
         columns: [
             {

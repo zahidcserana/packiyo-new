@@ -3,7 +3,7 @@ window.RateCard = function () {
         selector: '#rate-cards-table',
         resource: 'rate-cards',
         ajax: {
-            url: '/rate_cards/data_table/'
+            url: '/rate_cards/data_table'
         },
         columns: [
             {

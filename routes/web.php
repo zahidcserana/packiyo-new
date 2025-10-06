@@ -203,6 +203,7 @@ Route::group(['middleware' => ['auth', 'active']], static function () {
     Route::resource('customers.easypost_credentials', 'EasypostCredentialController');
 
     Route::resource('customers.webshipper_credentials', 'WebshipperCredentialController');
+    Route::resource('customers.pathao_credentials', 'PathaoCredentialController');
 
     Route::get('customer/{customer}/cssOverrides', 'CustomerController@edit')->name('customer.cssOverrides');
 
