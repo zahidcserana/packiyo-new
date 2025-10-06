@@ -346,6 +346,11 @@ class Customer extends Model
         return $this->hasMany(Webhook::class);
     }
 
+    public function pathaoCredentials()
+    {
+        return $this->hasMany(PathaoCredential::class);
+    }
+
     public function webshipperCredentials()
     {
         return $this->hasMany(WebshipperCredential::class);
