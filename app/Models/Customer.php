@@ -95,6 +95,7 @@ use Laravel\Pennant\Feature;
  * @property-read Collection<int, \App\Models\Task> $tasks
  * @property-read int|null $tasks_count
  * @property-read \App\Models\Image|null $threeplLogo
+ * @property-read \App\Models\Image|null $storeLogo
  * @property-read \App\Models\TribirdCredential|null $tribirdCredential
  * @property-read Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
@@ -303,6 +304,11 @@ class Customer extends Model
         return $this->hasMany(Return_::class);
     }
 
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
     public function suppliers()
     {
         return $this->hasMany(Supplier::class);
@@ -379,6 +385,11 @@ class Customer extends Model
     public function threeplLogo()
     {
         return $this->morphOne(Image::class, 'object')->where('image_type', 'threepl_logo')->latest();
+    }
+
+    public function storeLogo()
+    {
+        return $this->morphOne(Image::class, 'object')->where('image_type', 'store_logo')->latest();
     }
 
     public function accountLogo()

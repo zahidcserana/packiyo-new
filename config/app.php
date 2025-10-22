@@ -243,7 +243,7 @@ return [
         \App\Providers\ZplConverterComponentServiceProvider::class,
         \App\Providers\AuditComponentServiceProvider::class,
         // TODO: Reactivate for calculating occupied inventory locations using MongoDB.
-        Jenssegers\Mongodb\MongodbServiceProvider::class, // TODO: Should this be autoloaded?
+        // Jenssegers\Mongodb\MongodbServiceProvider::class, // TODO: Should this be autoloaded?
         \App\Providers\FulfillmentBillingCalculatorServiceProvider::class,
         \App\Providers\ShipmentBillingCacheServiceProvider::class,
         \App\Providers\PickingBillingRateCacheProcessorProvider::class,

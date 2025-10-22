@@ -142,7 +142,18 @@
                                                        'name' => 'threepl_logo'
                                                    ])
                                                 </div>
+                                                <div class="form-group {{ $errors->has('store_logo') ? 'has-danger' : '' }} flex-column col-6">
+                                                    <label class="form-control-label text-neutral-text-gray font-weight-600 font-xs" for="store_logo">
+                                                        {{ __('Store Logo') }}
+                                                    </label>
+                                                    @include('shared.forms.dropzoneBasic', [
+                                                       'url' => route('customer.update', [ 'customer' => $customer->id ]),
+                                                       'images' => $customer->storeLogo ?? '',
+                                                       'name' => 'store_logo'
+                                                   ])
+                                                </div>
                                             @endif
+
 
                                         @if($customer->availableShippingBoxes()->isNotEmpty())
                                         <div class="form-group">
