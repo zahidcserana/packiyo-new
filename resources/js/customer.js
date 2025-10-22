@@ -16,6 +16,18 @@ window.Customer = function () {
             },
             {"title": "Name", "data": "name", "name": "contact_informations.name"},
             {"title": "Company Name", "data": "company_name", "name": "contact_informations.company_name"},
+
+            {
+                "orderable": false,
+                "class":"text-left",
+                "title": "Store",
+                "data": function (data) {
+                    return `<a type="button" class="table-icon-button" href="${data['link_store']}">
+                                ${data['store_name']}
+                            </a>`;
+                },
+            },
+
             {"title": "Address", "data": "address", "name": "contact_informations.address"},
             {"title": "Address2", "data": "address2", "name": "contact_informations.address2"},
             {"title": "Zip", "data": "zip", "name": "contact_informations.zip"},
