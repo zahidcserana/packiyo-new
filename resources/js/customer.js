@@ -22,9 +22,11 @@ window.Customer = function () {
                 "class":"text-left",
                 "title": "Store",
                 "data": function (data) {
-                    return `<a type="button" class="table-icon-button" href="${data['link_store']}">
-                                ${data['store_name']}
-                            </a>`;
+                    if (data['link_store'])
+                        return `<a type="button" class="table-icon-button" href="${data['link_store']}">
+                                    ${data['store_name']}
+                                </a>`;
+                    return ``
                 },
             },
 
