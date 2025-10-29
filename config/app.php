@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'main_domain' => env('APP_DOMAIN', 'analyticalj.com'),
+
     'asset_url' => env('ASSET_URL', null),
 
     'send_exported_file_after_seconds' => env('SEND_EXPORTED_FILE_AFTER_SECONDS', 60),

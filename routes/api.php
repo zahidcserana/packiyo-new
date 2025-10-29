@@ -463,6 +463,25 @@ Route::post('login', 'Api\LoginController@authenticate')->name('login.authentica
 
 
 /** storefront Api */
+
+// Domain-based or subdomain-based
+Route::prefix('storefront')
+    ->middleware('tenant')
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'index']);
+        Route::get('/products', [ProductController::class, 'index']);
+        Route::get('/product_search', [ProductController::class, 'productSearch']);
+        Route::get('/products/{id}', [ProductController::class, 'show']);
+        Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
+
+        Route::post('/orders', [OrderController::class, 'store']);
+        Route::post('/cart', [CartController::class, 'store']);
+        Route::get('/cart/{cartToken}', [CartController::class, 'show']);
+        Route::put('/cart/{cartToken}', [CartController::class, 'update']);
+
+        Route::post('/checkout', [OrderController::class, 'checkout']);
+    });
+
 // Slug-based
 Route::prefix('storefront/{tenantSlug}')
     ->middleware('tenant')
@@ -474,21 +493,6 @@ Route::prefix('storefront/{tenantSlug}')
         Route::get('/tags/{tagSlug}/products', [ProductController::class, 'getProductsByTag']);
 
         Route::post('/orders', [OrderController::class, 'store']);
-        Route::post('/cart', [CartController::class, 'store']);
-        Route::get('/cart/{cartToken}', [CartController::class, 'show']);
-        Route::put('/cart/{cartToken}', [CartController::class, 'update']);
-
-        Route::post('/checkout', [OrderController::class, 'checkout']);
-    });
-
-// Domain-based or subdomain-based
-Route::prefix('storefront')
-    ->middleware('tenant')
-    ->group(function () {
-        Route::get('/', [HomeController::class, 'index']);
-        Route::get('/products', [ProductController::class, 'index']);
-        Route::get('/products/{id}', [ProductController::class, 'show']);
-
         Route::post('/cart', [CartController::class, 'store']);
         Route::get('/cart/{cartToken}', [CartController::class, 'show']);
         Route::put('/cart/{cartToken}', [CartController::class, 'update']);

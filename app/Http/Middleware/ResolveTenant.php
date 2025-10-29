@@ -9,41 +9,38 @@ class ResolveTenant
 {
     public function handle($request, Closure $next)
     {
-        $host = $request->getHost();
-        $tenant = null;
+        $origin = $request->headers->get('Origin')
+            ?? $request->headers->get('Referer')
+            ?? $request->getSchemeAndHttpHost();
 
-        // 1. Try resolve by custom store_domain
-        $tenant = Customer::where('store_domain', $host)->first();
+        $host = parse_url($origin, PHP_URL_HOST);
+        $mainDomain = config('app.main_domain');
 
-        // 2. Try resolve by subdomain (e.g. acme.yourdomain.com)
-        if (!$tenant && config('app.main_domain')) {
-            $mainDomain = config('app.main_domain'); // e.g. yourdomain.com
-
-            if (str_ends_with($host, $mainDomain)) {
-                $subdomain = str_replace('.' . $mainDomain, '', $host);
-
-                if ($subdomain && $subdomain !== 'www') {
-                    $tenant = Customer::where('slug', $subdomain)->first();
-                }
-            }
+        // Resolve subdomain (e.g. ahlansahlan)
+        $subdomain = null;
+        if ($host && preg_match("/^(.*?)\.{$mainDomain}$/", $host, $matches)) {
+            $subdomain = $matches[1];
         }
 
-        // 3. Try resolve by slug in URL path
-        if (!$tenant && $request->route('tenantSlug')) {
-            $tenant = Customer::where('slug', $request->route('tenantSlug'))->first();
+        // Try resolving tenant
+        $tenant = Customer::query()
+            ->where('store_domain', $host)
+            ->orWhere('slug', $subdomain)
+            ->orWhere('slug', $request->route('tenantSlug'))
+            ->first();
+
+        // Local environment fallback
+        if (!$tenant && app()->environment('local')) {
+            $tenant = Customer::first();
         }
 
         if (!$tenant) {
-            return response()->json(['error' => 'Invalid tenant'], 404);
+            return response()->json(['error' => 'Tenant not found'], 404);
         }
 
-        // Bind tenant globally
         app()->instance('tenant', $tenant);
-
-        // Inject tenant_id into request
         $request->merge(['tenant_id' => $tenant->id]);
 
         return $next($request);
     }
 }
-

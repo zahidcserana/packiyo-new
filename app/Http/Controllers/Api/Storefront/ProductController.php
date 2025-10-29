@@ -105,11 +105,11 @@ class ProductController extends ApiController
         return response()->json($data);
     }
 
-    public function getProductsByTag(Request $request, $tenantSlug, $tagSlug)
+    public function getProductsByTag(Request $request, $tagSlug)
     {
         // Get the tenant set by middleware
         $tenant = app('tenant');
-
+        
         // Find the tag for this tenant
         $tag = Tag::where('name', $tagSlug)
             ->where('customer_id', $tenant->id)
