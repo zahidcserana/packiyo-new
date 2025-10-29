@@ -115,6 +115,10 @@ class CustomerComponent extends BaseComponent
             $this->saveImage($customer, Arr::get($input, 'threepl_logo'), 'threepl_logo');
         }
 
+        if (!empty(Arr::get($input, 'store_logo'))) {
+            $this->saveImage($customer, Arr::get($input, 'store_logo'), 'store_logo');
+        }
+
         $customer->allow_child_customers = Arr::get($input, 'allow_child_customers') === '1';
 
         if (Arr::get($input, 'ship_from_contact_information_id') == 'none') {
