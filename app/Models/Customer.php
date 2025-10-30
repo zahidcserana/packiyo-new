@@ -144,6 +144,8 @@ class Customer extends Model
         'taskTypes',
         'products',
         'tasks',
+        'slug',
+        'store_domain',
         'printers'
     ];
 
@@ -152,8 +154,10 @@ class Customer extends Model
     protected $fillable = [
         'parent_id',
         'allow_child_customers',
+        'slug',
+        'store_domain',
         'ship_from_contact_information_id',
-        'return_to_contact_information_id'
+        'return_to_contact_information_id',
     ];
 
     protected $casts = [

@@ -54,6 +54,24 @@
                                             'customer' => $customer
                                         ])
                                         <hr>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-lg-flex">
+                                                @include('shared.forms.input', [
+                                                    'name' => 'slug',
+                                                    'containerClass' => 'w-50 mx-2',
+                                                    'label' => __('Store Subdomain'),
+                                                    'error' => ! empty($errors->get('slug')) ? $errors->first('slug') : false,
+                                                    'value' => $customer->slug,
+                                                ])
+                                                @include('shared.forms.input', [
+                                                    'name' => 'store_domain',
+                                                    'containerClass' => 'w-50 mx-2',
+                                                    'label' => __('Store Domain'),
+                                                    'error' => ! empty($errors->get('store_domain')) ? $errors->first('store_domain') : false,
+                                                    'value' => $customer->store_domain,
+                                                ])
+                                            </div>
+                                        </div>
                                         <div class="d-flex orderContactInfo flex-column mb-4">
                                             <div class="d-lg-flex">
                                                 @include('shared.forms.select', [

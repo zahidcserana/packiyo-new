@@ -21,6 +21,7 @@ class OrderController extends ApiController
                 $tenant = app('tenant');
                 $input = $request->all();
                 $input['customer_id'] = $tenant->id;
+                $input['shipping_contact_information'] = $input['billing_contact_information'];
     
                 $storeRequest = StoreRequest::make($input);
 
