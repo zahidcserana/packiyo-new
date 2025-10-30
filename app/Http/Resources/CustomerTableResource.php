@@ -28,7 +28,7 @@ class CustomerTableResource extends JsonResource
         $resource['email'] = $this->contactInformation->email;
         $resource['phone'] = $this->contactInformation->phone;
         $resource['link_edit'] =  route('customer.edit', ['customer' => $this]);
-        $resource['link_store'] =  $this->slug ? 'https://' . $this->slug . '.' . env('APP_DOMAIN'): '';
+        $resource['link_store'] =  get_app_link($this);
         $resource['link_delete'] = [
             'token' => csrf_token(),
             'url' => route('customer.destroy', ['id' => $this->id, 'customer' => $this])

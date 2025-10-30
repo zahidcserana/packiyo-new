@@ -248,6 +248,24 @@ if (!function_exists('threepl_logo')) {
     }
 }
 
+if (!function_exists('get_app_link')) {
+    function get_app_link($customer = null): string
+    {
+        if (!$customer) {
+            $customer = app('user')->getSessionCustomer();
+            if (!$customer) return '';
+        }
+        
+        if ($customer->store_domain) {
+            return 'https://' . $customer->store_domain;
+        }
+
+        return $customer->slug ?
+                'https://' . $customer->slug . '.' . env('APP_DOMAIN') :
+                ($customer->parent && $customer->parent->slug ? 'https://' . $customer->parent->slug . '.' . env('APP_DOMAIN') : '');
+    }
+}
+
 if (!function_exists('login_logo')) {
     function login_logo(): string
     {

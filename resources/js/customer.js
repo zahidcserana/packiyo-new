@@ -23,7 +23,7 @@ window.Customer = function () {
                 "title": "Store",
                 "data": function (data) {
                     if (data['link_store'])
-                        return `<a type="button" class="table-icon-button" href="${data['link_store']}">
+                        return `<a type="button" class="table-icon-button" href="${data['link_store']}" target="_blank">
                                     ${data['store_name']}
                                 </a>`;
                     return ``
