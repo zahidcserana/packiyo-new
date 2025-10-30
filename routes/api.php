@@ -475,11 +475,6 @@ Route::prefix('storefront')
         Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
 
         Route::post('/orders', [OrderController::class, 'store']);
-        Route::post('/cart', [CartController::class, 'store']);
-        Route::get('/cart/{cartToken}', [CartController::class, 'show']);
-        Route::put('/cart/{cartToken}', [CartController::class, 'update']);
-
-        Route::post('/checkout', [OrderController::class, 'checkout']);
     });
 
 // Slug-based
@@ -493,9 +488,4 @@ Route::prefix('storefront/{tenantSlug}')
         Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
 
         Route::post('/orders', [OrderController::class, 'store']);
-        Route::post('/cart', [CartController::class, 'store']);
-        Route::get('/cart/{cartToken}', [CartController::class, 'show']);
-        Route::put('/cart/{cartToken}', [CartController::class, 'update']);
-
-        Route::post('/checkout', [OrderController::class, 'checkout']);
     });

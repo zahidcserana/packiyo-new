@@ -24,7 +24,7 @@ class HomeController extends ApiController
                 'products' => function ($query) use ($tenant) {
                     $query->where('customer_id', $tenant->id)
                         ->latest()
-                        ->take(2)
+                        ->take(5)
                         ->with('productImages'); // eager load images for performance
                 }
             ])

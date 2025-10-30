@@ -143,19 +143,4 @@ class ProductController extends ApiController
             'data' => $formattedProducts,
         ]);
     }
-
-
-    public function getProductsByTagOld(Request $request, $tenantSlug, $tagSlug)
-    {
-        $tenant = app('tenant'); // set by middleware
-
-        $tag = Tag::where('name', $tagSlug)->where('customer_id', $tenant->id)->firstOrFail();
-
-        $products = $tag->products()
-            ->where('customer_id', $tenant->id)
-            ->with(['tags']) // optional: eager load tags
-            ->paginate(20);
-
-        return response()->json($products);
-    }
 }
