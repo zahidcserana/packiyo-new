@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'main_domain' => env('APP_DOMAIN', 'analyticalj.com'),
+
     'asset_url' => env('ASSET_URL', null),
 
     'send_exported_file_after_seconds' => env('SEND_EXPORTED_FILE_AFTER_SECONDS', 60),
@@ -243,7 +245,7 @@ return [
         \App\Providers\ZplConverterComponentServiceProvider::class,
         \App\Providers\AuditComponentServiceProvider::class,
         // TODO: Reactivate for calculating occupied inventory locations using MongoDB.
-        Jenssegers\Mongodb\MongodbServiceProvider::class, // TODO: Should this be autoloaded?
+        // Jenssegers\Mongodb\MongodbServiceProvider::class, // TODO: Should this be autoloaded?
         \App\Providers\FulfillmentBillingCalculatorServiceProvider::class,
         \App\Providers\ShipmentBillingCacheServiceProvider::class,
         \App\Providers\PickingBillingRateCacheProcessorProvider::class,

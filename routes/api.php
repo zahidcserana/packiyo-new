@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\Storefront\CartController;
+use App\Http\Controllers\Api\Storefront\HomeController;
+use App\Http\Controllers\Api\Storefront\OrderController;
+use App\Http\Controllers\Api\Storefront\ProductController;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use LaravelJsonApi\Laravel\Facades\JsonApiRoute;
 use LaravelJsonApi\Laravel\Routing\ActionRegistrar;
@@ -456,3 +460,32 @@ Route::middleware(['auth:sanctum', EnsureFrontendRequestsAreStateful::class, 'ap
 });
 
 Route::post('login', 'Api\LoginController@authenticate')->name('login.authenticate');
+
+
+/** storefront Api */
+
+// Domain-based or subdomain-based
+Route::prefix('storefront')
+    ->middleware('tenant')
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'index']);
+        Route::get('/products', [ProductController::class, 'index']);
+        Route::get('/product_search', [ProductController::class, 'productSearch']);
+        Route::get('/products/{id}', [ProductController::class, 'show']);
+        Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
+
+        Route::post('/orders', [OrderController::class, 'store']);
+    });
+
+// Slug-based
+Route::prefix('storefront/{tenantSlug}')
+    ->middleware('tenant')
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'index']);
+        Route::get('/products', [ProductController::class, 'index']);
+        Route::get('/product_search', [ProductController::class, 'productSearch']);
+        Route::get('/products/{id}', [ProductController::class, 'show']);
+        Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
+
+        Route::post('/orders', [OrderController::class, 'store']);
+    });

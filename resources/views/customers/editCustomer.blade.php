@@ -54,6 +54,24 @@
                                             'customer' => $customer
                                         ])
                                         <hr>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-lg-flex">
+                                                @include('shared.forms.input', [
+                                                    'name' => 'slug',
+                                                    'containerClass' => 'w-50 mx-2',
+                                                    'label' => __('Store Subdomain'),
+                                                    'error' => ! empty($errors->get('slug')) ? $errors->first('slug') : false,
+                                                    'value' => $customer->slug,
+                                                ])
+                                                @include('shared.forms.input', [
+                                                    'name' => 'store_domain',
+                                                    'containerClass' => 'w-50 mx-2',
+                                                    'label' => __('Store Domain'),
+                                                    'error' => ! empty($errors->get('store_domain')) ? $errors->first('store_domain') : false,
+                                                    'value' => $customer->store_domain,
+                                                ])
+                                            </div>
+                                        </div>
                                         <div class="d-flex orderContactInfo flex-column mb-4">
                                             <div class="d-lg-flex">
                                                 @include('shared.forms.select', [
@@ -142,7 +160,18 @@
                                                        'name' => 'threepl_logo'
                                                    ])
                                                 </div>
+                                                <div class="form-group {{ $errors->has('store_logo') ? 'has-danger' : '' }} flex-column col-6">
+                                                    <label class="form-control-label text-neutral-text-gray font-weight-600 font-xs" for="store_logo">
+                                                        {{ __('Store Logo') }}
+                                                    </label>
+                                                    @include('shared.forms.dropzoneBasic', [
+                                                       'url' => route('customer.update', [ 'customer' => $customer->id ]),
+                                                       'images' => $customer->storeLogo ?? '',
+                                                       'name' => 'store_logo'
+                                                   ])
+                                                </div>
                                             @endif
+
 
                                         @if($customer->availableShippingBoxes()->isNotEmpty())
                                         <div class="form-group">
