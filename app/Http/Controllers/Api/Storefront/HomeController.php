@@ -24,7 +24,7 @@ class HomeController extends ApiController
                 'products' => function ($query) use ($tenant) {
                     $query->where('customer_id', $tenant->id)
                         ->latest()
-                        ->take(5)
+                        ->take(10)
                         ->with('productImages'); // eager load images for performance
                 }
             ])
@@ -51,11 +51,12 @@ class HomeController extends ApiController
                     return [
                         'id' => $product->id,
                         'name' => $product->name,
+                        'feature_product' => $product->inventory_sync,
                         'category' => $product->tags?->first()?->name,
                         'sku' => $product->sku,
                         'description' => $product->customs_description,
                         'price' => (float) $product->price,
-                        'image_url' => $product->productImages->first()?->source ?? null,
+                        'image_url' => $product->productImages->first()?->source ?? asset('img/product-default.png'),
                         'updated_at' => $product->updated_at->toDateTimeString(),
                     ];
                 });
@@ -65,7 +66,7 @@ class HomeController extends ApiController
                     'name' => $tag->name,
                     'product_count' => $productCount,
                     'products' => $products,
-                    'feature_product' => $products->first(), // ✅ this now works properly
+                    'feature_product' => $products->where('feature_product', true)->first(), // ✅ this now works properly
                 ];
             }),
         ];

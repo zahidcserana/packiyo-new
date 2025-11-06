@@ -15,7 +15,7 @@ class ProductController extends ApiController
 
         $products = Product::where('customer_id', $tenantId)
             // ->where('is_active', true)
-            ->with('productImages') // eager load all images
+            ->with('productImages', 'tags') // eager load all images
             ->paginate(20);
 
           // Format the response
@@ -27,7 +27,7 @@ class ProductController extends ApiController
                 'sku' => $product->sku,
                 'description' => $product->customs_description,
                 'price' => (float) $product->price,
-                'images' => $product->productImages->map(fn($image) => $image->source),
+                'images' => $product->productImages->isNotEmpty()? $product->productImages->pluck('source'): [asset('img/product-default.png')],
                 'updated_at' => $product->updated_at->toDateTimeString(),
             ];
         });
@@ -69,12 +69,14 @@ class ProductController extends ApiController
             'id' => $product->id,
             'name' => $product->name,
             'sku' => $product->sku,
+            'feature_product' => $product->inventory_sync,
             'category' => $product->tags?->first()?->name,
             'description' => $product->customs_description,
             'price' => (float) $product->price,
             'notes_raw' => $product->notes,       // keep original string if needed
             'content' => $items,                    // structured version
-            'images' => $product->productImages->map(fn($image) => $image->source)->values(),
+            // 'images' => $product->productImages->map(fn($image) => $image->source)->values(),
+            'images' => $product->productImages->isNotEmpty()? $product->productImages->pluck('source'): [asset('img/product-default.png')],
             'updated_at' => $product->updated_at->toDateTimeString(),
         ];
 
@@ -130,7 +132,8 @@ class ProductController extends ApiController
                 'sku' => $product->sku,
                 'description' => $product->customs_description,
                 'price' => (float) $product->price,
-                'images' => $product->productImages->map(fn($image) => $image->source),
+                'images' => $product->productImages->isNotEmpty()? $product->productImages->pluck('source'): [asset('img/product-default.png')],
+                // 'images' => $product->productImages->map(fn($image) => $image->source) ?? [asset('img/product-default.png')],
                 'updated_at' => $product->updated_at->toDateTimeString(),
             ];
         });
