@@ -241,14 +241,14 @@
                         <div class="py-3 border-bottom d-flex hidden_checkboxes">
                             <div class="w-100 product-details-checkboxes-title">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="text-neutral-text-gray font-weight-600 font-xs">{{ __('Enable Inventory Sync') }}</div>
+                                    <div class="text-neutral-text-gray font-weight-600 font-xs">{{ __('Featured Product') }}</div>
                                     <div class="text-black text-right font-sm font-weight-600 inventory-sync-status">{{ $product->inventory_sync === 1 ? "Yes" : "No" }}</div>
                                 </div>
                             </div>
                             <div class="custom-form-checkbox serial-number-checkbox position-relative font-weight-600 d-none">
                                 @include('shared.forms.checkbox', [
                                    'name' => 'inventory_sync',
-                                   'label' => __('Enable Inventory Sync'),
+                                   'label' => __('Featured Product'),
                                    'checked' => $product->inventory_sync,
                                    'value' => true
                                 ])

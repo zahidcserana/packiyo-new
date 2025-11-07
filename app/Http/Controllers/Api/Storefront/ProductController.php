@@ -25,7 +25,7 @@ class ProductController extends ApiController
                 'name' => $product->name,
                 'category' => $product->tags?->first()?->name,
                 'sku' => $product->sku,
-                'description' => $product->customs_description,
+                'description' => nl2br($product->notes),
                 'price' => (float) $product->price,
                 'images' => $product->productImages->isNotEmpty()? $product->productImages->pluck('source'): [asset('img/product-default.png')],
                 'updated_at' => $product->updated_at->toDateTimeString(),
@@ -54,7 +54,7 @@ class ProductController extends ApiController
             ->firstOrFail();
 
         // ✅ Parse the notes safely into structured items
-        $items = collect(explode(',', $product->notes ?? ''))
+        $items = collect(explode(',', $product->customs_description ?? ''))
             ->map(function ($row) {
                 $parts = array_map('trim', explode(':', $row, 2));
                 return [
@@ -71,9 +71,8 @@ class ProductController extends ApiController
             'sku' => $product->sku,
             'feature_product' => $product->inventory_sync,
             'category' => $product->tags?->first()?->name,
-            'description' => $product->customs_description,
+            'description' => nl2br($product->notes),
             'price' => (float) $product->price,
-            'notes_raw' => $product->notes,       // keep original string if needed
             'content' => $items,                    // structured version
             // 'images' => $product->productImages->map(fn($image) => $image->source)->values(),
             'images' => $product->productImages->isNotEmpty()? $product->productImages->pluck('source'): [asset('img/product-default.png')],
@@ -98,7 +97,7 @@ class ProductController extends ApiController
             'name' => $product->name,
             'category' => $product->tags?->first()?->name,
             'sku' => $product->sku,
-            'description' => $product->customs_description,
+            'description' => nl2br($product->notes),
             'price' => (float) $product->price,
             'images' => $product->productImages->map(fn($image) => $image->source),
             'updated_at' => $product->updated_at->toDateTimeString(),
@@ -130,7 +129,7 @@ class ProductController extends ApiController
                 'name' => $product->name,
                 'category' => $product->tags?->first()?->name,
                 'sku' => $product->sku,
-                'description' => $product->customs_description,
+                'description' => nl2br($product->notes),
                 'price' => (float) $product->price,
                 'images' => $product->productImages->isNotEmpty()? $product->productImages->pluck('source'): [asset('img/product-default.png')],
                 // 'images' => $product->productImages->map(fn($image) => $image->source) ?? [asset('img/product-default.png')],
