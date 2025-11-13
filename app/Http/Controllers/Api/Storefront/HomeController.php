@@ -38,11 +38,13 @@ class HomeController extends ApiController
                 'name' => $tenant->ContactInformation->name,
                 'image' => $tenant->threeplLogo?->source ?? asset('img/banner.jpg'),
                 'store_image' => $tenant->storeLogo?->source ?? asset('img/store.webp'),
+                'banner_image' => $tenant->bannerImages()->pluck('source'),
                 'company' => $tenant->ContactInformation->company_name,
                 'slug' => $tenant->slug,
                 'store_domain' => $tenant->store_domain,
                 'about' => customer_settings($tenant->id, CustomerSetting::CUSTOMER_SETTING_CUSTOMS_DESCRIPTION),
                 'moto' => customer_settings($tenant->id, CustomerSetting::CUSTOMER_SETTING_CUSTOMS_SIGNER),
+                'store_tagline' => customer_settings($tenant->id, CustomerSetting::CUSTOMER_SETTING_EEL_PFC),
             ],
             'tags' => $tags->map(function ($tag) {
                 $productCount = $tag->products()->count();
@@ -54,7 +56,7 @@ class HomeController extends ApiController
                         'feature_product' => $product->inventory_sync,
                         'category' => $product->tags?->first()?->name,
                         'sku' => $product->sku,
-                        'description' => $product->customs_description,
+                        'description' => nl2br($product->notes),
                         'price' => (float) $product->price,
                         'image_url' => $product->productImages->first()?->source ?? asset('img/product-default.png'),
                         'updated_at' => $product->updated_at->toDateTimeString(),
