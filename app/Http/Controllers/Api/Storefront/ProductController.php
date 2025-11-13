@@ -16,6 +16,7 @@ class ProductController extends ApiController
         $products = Product::where('customer_id', $tenantId)
             // ->where('is_active', true)
             ->with('productImages', 'tags') // eager load all images
+            ->orderBy('id', 'desc')
             ->paginate(20);
 
           // Format the response

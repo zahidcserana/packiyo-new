@@ -54,7 +54,7 @@ class HomeController extends ApiController
                         'feature_product' => $product->inventory_sync,
                         'category' => $product->tags?->first()?->name,
                         'sku' => $product->sku,
-                        'description' => $product->customs_description,
+                        'description' => nl2br($product->notes),
                         'price' => (float) $product->price,
                         'image_url' => $product->productImages->first()?->source ?? asset('img/product-default.png'),
                         'updated_at' => $product->updated_at->toDateTimeString(),
