@@ -396,6 +396,11 @@ class Customer extends Model
         return $this->morphOne(Image::class, 'object')->where('image_type', 'store_logo')->latest();
     }
 
+    public function bannerImages()
+    {
+        return $this->morphOne(Image::class, 'object')->where('image_type', 'store_logo');
+    }
+
     public function accountLogo()
     {
         return $this->morphOne(Image::class, 'object')->where('image_type', 'account_logo')->latest();
