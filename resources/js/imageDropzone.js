@@ -90,7 +90,7 @@ window.ImageDropzone = function (formId = '', buttonId = '') {
 
         if (!$.isEmptyObject(uploadedImages)) {
             dropzoneIds.forEach(function (dropzoneId) {
-                if ($('#' + dropzoneId).data('multiple')) {
+                if ($('#' + dropzoneId).data('multiple') && uploadedImages[dropzoneId] !== undefined) {
                         uploadedImages[dropzoneId].forEach(function (file) {
                         formData.append(dropzoneId + "[]", file)
                     })
