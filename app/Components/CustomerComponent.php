@@ -119,7 +119,7 @@ class CustomerComponent extends BaseComponent
             $this->saveImage($customer, Arr::get($input, 'store_logo'), 'store_logo');
         }
 
-        if (!empty(Arr::get($input, 'banner_image'))) {
+        if (!empty(Arr::get($input, 'banner_image')) && Arr::get($input, 'banner_image') != 'undefined') {
             foreach (Arr::get($input, 'banner_image') as $img) {
                 $this->saveImage($customer, $img, 'banner_image');
             }
