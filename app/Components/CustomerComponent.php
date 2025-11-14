@@ -119,6 +119,12 @@ class CustomerComponent extends BaseComponent
             $this->saveImage($customer, Arr::get($input, 'store_logo'), 'store_logo');
         }
 
+        if (!empty(Arr::get($input, 'banner_image'))) {
+            foreach (Arr::get($input, 'banner_image') as $img) {
+                $this->saveImage($customer, $img, 'banner_image');
+            }
+        }
+
         $customer->allow_child_customers = Arr::get($input, 'allow_child_customers') === '1';
 
         if (Arr::get($input, 'ship_from_contact_information_id') == 'none') {

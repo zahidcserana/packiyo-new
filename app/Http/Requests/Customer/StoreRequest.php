@@ -39,6 +39,9 @@ class StoreRequest extends FormRequest
             'store_logo' => [
                 'nullable'
             ],
+            'banner_image' => [
+                'nullable'
+            ],
             'currency' => [
                 'nullable',
                 'string',

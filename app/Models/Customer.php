@@ -96,6 +96,7 @@ use Laravel\Pennant\Feature;
  * @property-read int|null $tasks_count
  * @property-read \App\Models\Image|null $threeplLogo
  * @property-read \App\Models\Image|null $storeLogo
+ * @property-read \App\Models\Image|null $bannerImages
  * @property-read \App\Models\TribirdCredential|null $tribirdCredential
  * @property-read Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
@@ -398,7 +399,7 @@ class Customer extends Model
 
     public function bannerImages()
     {
-        return $this->morphOne(Image::class, 'object')->where('image_type', 'store_logo');
+        return $this->morphOne(Image::class, 'object')->where('image_type', 'banner_image');
     }
 
     public function accountLogo()
