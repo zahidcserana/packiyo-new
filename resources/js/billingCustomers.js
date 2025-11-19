@@ -4,7 +4,7 @@ window.BillingCustomers = function () {
             selector: '#customers-table',
             resource: 'billing-customers',
             ajax: {
-                url: '/billings/customers/data-table/'
+                url: '/billings/customers/data-table'
             },
             columns: [
                 {
