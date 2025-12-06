@@ -427,8 +427,8 @@
                                 value="{{ $product->hs_code ?? '' }}">
                         </div>
                         <div class="d-flex justify-content-between border-bottom py-3 align-items-center">
-                            <label for="customs_description" class="text-neutral-text-gray font-weight-600 font-xs" data-id="customs_description">{{ __('Customs Description') }}</label>
-                            <input class="form-control text-black text-right font-sm font-weight-600" name="customs_description" value="{{ $product->customs_description ?? "" }}">
+                            <label for="customs_description" class="text-neutral-text-gray font-weight-600 font-xs" data-id="customs_description">{{ __('Box Description') }}</label>
+                            <input class="form-control text-black text-right font-sm font-weight-600" name="customs_description" value="{{ $product->customs_description ?? "" }}" placeholder="{{ __('1:Box item') }}">
                         </div>
                     </div>
                 </div>
@@ -483,7 +483,7 @@
             <form class="col-12 border-12 py-3 px-4 m-0 mb-3 bg-white smallForm productForm" data-type="PUT" enctype="multipart/form-data" action="{{ route('product.update', ['product' => $product]) }}">
                 <div class="border-bottom  py-2 d-flex">
                     <h6 class="modal-title text-black text-left"
-                        id="modal-title-notification">{{ __('Notes') }}</h6>
+                        id="modal-title-notification">{{ __('Features') }}</h6>
                     @include('shared.buttons.sectionEditButtons', ['saveButtonId' => 'submit-international'])
                     @csrf
                     {{ method_field('PUT') }}
