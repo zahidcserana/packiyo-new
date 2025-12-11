@@ -145,8 +145,6 @@ class Customer extends Model
         'taskTypes',
         'products',
         'tasks',
-        'slug',
-        'store_domain',
         'printers'
     ];
 
