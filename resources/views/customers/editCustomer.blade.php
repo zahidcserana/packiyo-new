@@ -399,7 +399,7 @@
 
                                         <div class="form-group">
                                             @include('shared.forms.input', [
-                                                'label' => __('Customs description'),
+                                                'label' => __('About'),
                                                 'containerClass' => 'w-100',
                                                 'name' => \App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_DESCRIPTION,
                                                 'value' => $settings[\App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_DESCRIPTION] ?? ''
@@ -408,7 +408,7 @@
 
                                         <div class="form-group">
                                             @include('shared.forms.input', [
-                                                'label' => __('Customs signer'),
+                                                'label' => __('Motto'),
                                                 'containerClass' => 'w-100',
                                                 'name' => \App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_SIGNER,
                                                 'value' => $settings[\App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_SIGNER] ?? ''
@@ -417,7 +417,7 @@
 
                                         <div class="form-group">
                                             @include('shared.forms.input', [
-                                                'label' => __('EEL/PFC'),
+                                                'label' => __('Store Tagline'),
                                                 'containerClass' => 'w-100',
                                                 'name' => \App\Models\CustomerSetting::CUSTOMER_SETTING_EEL_PFC,
                                                 'value' => $settings[\App\Models\CustomerSetting::CUSTOMER_SETTING_EEL_PFC] ?? ''
