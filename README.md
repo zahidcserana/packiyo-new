@@ -62,3 +62,9 @@ To execute the test cases run the following command:
 You can seed the demo data with this command:
 
     php artisan db:seed --class DemoSeeder
+
+## Run Job Queue
+php artisan recalculate-ready-to-ship
+php artisan queue:work --queue=allocation,picking
+
+php artisan queue:listen

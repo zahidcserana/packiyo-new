@@ -30,6 +30,18 @@ class StoreRequest extends FormRequest
             'threepl_logo' => [
                 'nullable'
             ],
+            'slug' => [
+                'nullable'
+            ],
+            'store_domain' => [
+                'nullable'
+            ],
+            'store_logo' => [
+                'nullable'
+            ],
+            'banner_image' => [
+                'nullable'
+            ],
             'currency' => [
                 'nullable',
                 'string',

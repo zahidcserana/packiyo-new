@@ -56,7 +56,7 @@
     </select>
 </div>
 <div class="form-group col-12 col-md-3">
-    <label for="" class="font-xs">{{ __('Enable inventory sync') }}</label>
+    <label for="" class="font-xs">{{ __('Featured Product') }}</label>
     <select name="inventory_sync" class="form-control">
         <option value="" selected>{{ __('All') }}</option>
         <option value="1">{{ __('Yes') }}</option>

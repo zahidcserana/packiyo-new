@@ -58,7 +58,7 @@ window.BillingCustomers = function () {
             selector: '#customer-invoices-table',
             resource: 'customer-invoices',
             ajax: {
-                url: '/billings/customers/'+ customerId +'/invoices/data_table/'
+                url: '/billings/customers/'+ customerId +'/invoices/data_table'
             },
             columns: [
                 {

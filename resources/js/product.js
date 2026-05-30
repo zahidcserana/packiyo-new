@@ -253,7 +253,7 @@ window.Product = function (product = '', lotTracking = 0) {
                     'visible': false
                 },
                 {
-                    "title": "Enable Inventory Sync",
+                    "title": "Featured Product", //Enable Inventory Sync
                     "data": "inventory_sync",
                     "name": "products.inventory_sync",
                     'visible': false

@@ -34,7 +34,7 @@
             'containerClass' => 'col-12 col-md-6',
             'label' => __('Zip'),
             'error' => ! empty($errors->get($name.'.zip')) ? $errors->first($name.'.zip') : false,
-            'value' => $contactInformation->zip ?? $value ?? '',
+            'value' => $contactInformation->zip ?? $value ?? '0000',
         ])
         @include('shared.forms.input', [
             'name' => $name . '[city]',

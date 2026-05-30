@@ -17,6 +17,14 @@
 
                         </div>
                     </div>
+                    <div class="form-group mb-0 ml-5">
+                        @if (get_app_link())
+                            <a href="{{ get_app_link() }}" target="_blank">
+                                <i class="ni ni-planet"></i>
+                                <span>{{ __('Open App') }}</span>
+                            </a>
+                        @endif
+                    </div>
                 </div>
                 <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -226,7 +234,7 @@
                             <i class="ni ni-calendar-grid-58"></i>
                             <span>{{ __('Activity') }}</span>
                         </a>
-                        <a href="https://help.packiyo.com" class="dropdown-item" target="_blank">
+                        <a href="https://analyticalj.com" class="dropdown-item" target="_blank">
                             <i class="ni ni-support-16"></i>
                             <span>{{ __('Support') }}</span>
                         </a>

@@ -68,10 +68,10 @@ class ShippingMethodMapping extends Model
 
     public const CHEAPEST_SHIPPING_METHODS = [
         self::CHEAPEST_SHIPPING => 'Cheapest Shipping',
-        self::CHEAPEST_SHIPPING_ONE_DAY => 'Cheapest 1 Day Shipping',
-        self::CHEAPEST_SHIPPING_TWO_DAYS => 'Cheapest 2 Day Shipping',
-        self::CHEAPEST_SHIPPING_ONE_THREE_DAYS => 'Cheapest 1-3 Day Shipping',
-        self::CHEAPEST_SHIPPING_THREE_FIVE_DAYS => 'Cheapest 3-5 Day Shipping'
+        // self::CHEAPEST_SHIPPING_ONE_DAY => 'Cheapest 1 Day Shipping',
+        // self::CHEAPEST_SHIPPING_TWO_DAYS => 'Cheapest 2 Day Shipping',
+        // self::CHEAPEST_SHIPPING_ONE_THREE_DAYS => 'Cheapest 1-3 Day Shipping',
+        // self::CHEAPEST_SHIPPING_THREE_FIVE_DAYS => 'Cheapest 3-5 Day Shipping'
     ];
 
     public function customer()

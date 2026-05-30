@@ -95,6 +95,8 @@ use Laravel\Pennant\Feature;
  * @property-read Collection<int, \App\Models\Task> $tasks
  * @property-read int|null $tasks_count
  * @property-read \App\Models\Image|null $threeplLogo
+ * @property-read \App\Models\Image|null $storeLogo
+ * @property-read \App\Models\Image|null $bannerImages
  * @property-read \App\Models\TribirdCredential|null $tribirdCredential
  * @property-read Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
@@ -151,8 +153,10 @@ class Customer extends Model
     protected $fillable = [
         'parent_id',
         'allow_child_customers',
+        'slug',
+        'store_domain',
         'ship_from_contact_information_id',
-        'return_to_contact_information_id'
+        'return_to_contact_information_id',
     ];
 
     protected $casts = [
@@ -240,12 +244,12 @@ class Customer extends Model
 
     public function shippingMethods()
     {
-        return $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('active', true);
+        return $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('shipping_methods.active', true);
     }
 
     public function shippingMethodsWithCarrier()
     {
-        $shippingMethods = $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('active', true)->get();
+        $shippingMethods = $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('shipping_methods.active', true)->get();
 
         $result = [];
 
@@ -303,6 +307,11 @@ class Customer extends Model
         return $this->hasMany(Return_::class);
     }
 
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
     public function suppliers()
     {
         return $this->hasMany(Supplier::class);
@@ -346,6 +355,16 @@ class Customer extends Model
         return $this->hasMany(Webhook::class);
     }
 
+    public function pathaoCredentials()
+    {
+        return $this->hasMany(PathaoCredential::class);
+    }
+
+    public function steadfastCredentials()
+    {
+        return $this->hasMany(SteadfastCredential::class);
+    }
+
     public function webshipperCredentials()
     {
         return $this->hasMany(WebshipperCredential::class);
@@ -374,6 +393,16 @@ class Customer extends Model
     public function threeplLogo()
     {
         return $this->morphOne(Image::class, 'object')->where('image_type', 'threepl_logo')->latest();
+    }
+
+    public function storeLogo()
+    {
+        return $this->morphOne(Image::class, 'object')->where('image_type', 'store_logo')->latest();
+    }
+
+    public function bannerImages()
+    {
+        return $this->morphOne(Image::class, 'object')->where('image_type', 'banner_image');
     }
 
     public function accountLogo()

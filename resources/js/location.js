@@ -132,7 +132,7 @@ window.LocationForm = function (locationId = '') {
             $.ajax({
                 type: 'GET',
                 serverSide: true,
-                url: '/location/getLocationModal/',
+                url: '/location/getLocationModal',
                 success: function (data) {
                     $('#locationCreateModal > div').html(data)
                 },

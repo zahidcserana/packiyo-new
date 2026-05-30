@@ -74,7 +74,9 @@ class Kernel extends HttpKernel
         'active' => \App\Http\Middleware\IsActiveUser::class,
         'active.api' => \App\Http\Middleware\IsActiveUserApi::class,
         'is-admin' => IsAdminUserMiddleware::class,
-        'widget-shortcode' => WidgetShortcodeMiddleware::class
+        'widget-shortcode' => WidgetShortcodeMiddleware::class,
+        'tenant' => \App\Http\Middleware\ResolveTenant::class,
+
     ];
 
     /**

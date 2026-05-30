@@ -7,7 +7,7 @@ window.ToteLogReport = function () {
         selector: selector,
         resource: 'tote_log',
         ajax: {
-            url: '/report/tote_log/data_table/',
+            url: '/report/tote_log/data_table',
             data: function (data) {
                 let request = {}
                 filterForm

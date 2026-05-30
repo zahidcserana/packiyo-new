@@ -26,13 +26,16 @@
                                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" href="{{ route('customer.editUsers', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{ __('Users') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.easypost_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Easypost Credentials')}}</a>
+                                    <a class="nav-link mb-sm-3 mb-md-0 d-none" id="tabs-icons-text-3-tab" href="{{ route('customers.easypost_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Easypost Credentials')}}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.webshipper_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Webshipper Credentials')}}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.pathao_credentials.index', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Pathao Credentials')}}</a>
+                                </li>
                                 @if($customer->parent && auth()->user()->isAdmin())
-                                    <li class="nav-item">
+                                    <li class="nav-item d-none">
                                         <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" href="{{ route('customers.rate_cards.edit', [ 'customer' => $customer ]) }}" role="tab" aria-controls="tabs-icons-text-2" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>{{__('Rate cards')}}</a>
                                     </li>
                                 @endif
@@ -51,6 +54,24 @@
                                             'customer' => $customer
                                         ])
                                         <hr>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-lg-flex">
+                                                @include('shared.forms.input', [
+                                                    'name' => 'slug',
+                                                    'containerClass' => 'w-50 mx-2',
+                                                    'label' => __('Store Subdomain'),
+                                                    'error' => ! empty($errors->get('slug')) ? $errors->first('slug') : false,
+                                                    'value' => $customer->slug,
+                                                ])
+                                                @include('shared.forms.input', [
+                                                    'name' => 'store_domain',
+                                                    'containerClass' => 'w-50 mx-2',
+                                                    'label' => __('Store Domain'),
+                                                    'error' => ! empty($errors->get('store_domain')) ? $errors->first('store_domain') : false,
+                                                    'value' => $customer->store_domain,
+                                                ])
+                                            </div>
+                                        </div>
                                         <div class="d-flex orderContactInfo flex-column mb-4">
                                             <div class="d-lg-flex">
                                                 @include('shared.forms.select', [
@@ -140,6 +161,30 @@
                                                    ])
                                                 </div>
                                             @endif
+
+                                            <div class="form-group {{ $errors->has('store_logo') ? 'has-danger' : '' }} flex-column col-6">
+                                                <label class="form-control-label text-neutral-text-gray font-weight-600 font-xs" for="store_logo">
+                                                    {{ __('Store Logo') }}
+                                                </label>
+                                                @include('shared.forms.dropzoneBasic', [
+                                                    'url' => route('customer.update', [ 'customer' => $customer->id ]),
+                                                    'images' => $customer->storeLogo ?? '',
+                                                    'name' => 'store_logo'
+                                                ])
+                                            </div>
+                                            <div class="form-group {{ $errors->has('banner_image') ? 'has-danger' : '' }} flex-column col-6">
+                                                <label class="form-control-label text-neutral-text-gray font-weight-600 font-xs" for="banner_image">
+                                                    {{ __('Banner Image') }}
+                                                </label>
+                                                @include('shared.forms.dropzoneBasic', [
+                                                    'url' => route('customer.update', [ 'customer' => $customer->id ]),
+                                                    'images' => $customer->bannerImages ?? '',
+                                                    'name' => 'banner_image',
+                                                    'isMultiple' => 1
+                                                ])
+                                            </div>
+                                        </div>
+
 
                                         @if($customer->availableShippingBoxes()->isNotEmpty())
                                         <div class="form-group">
@@ -354,7 +399,7 @@
 
                                         <div class="form-group">
                                             @include('shared.forms.input', [
-                                                'label' => __('Customs description'),
+                                                'label' => __('About'),
                                                 'containerClass' => 'w-100',
                                                 'name' => \App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_DESCRIPTION,
                                                 'value' => $settings[\App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_DESCRIPTION] ?? ''
@@ -363,7 +408,7 @@
 
                                         <div class="form-group">
                                             @include('shared.forms.input', [
-                                                'label' => __('Customs signer'),
+                                                'label' => __('Motto'),
                                                 'containerClass' => 'w-100',
                                                 'name' => \App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_SIGNER,
                                                 'value' => $settings[\App\Models\CustomerSetting::CUSTOMER_SETTING_CUSTOMS_SIGNER] ?? ''
@@ -372,7 +417,7 @@
 
                                         <div class="form-group">
                                             @include('shared.forms.input', [
-                                                'label' => __('EEL/PFC'),
+                                                'label' => __('Store Tagline'),
                                                 'containerClass' => 'w-100',
                                                 'name' => \App\Models\CustomerSetting::CUSTOMER_SETTING_EEL_PFC,
                                                 'value' => $settings[\App\Models\CustomerSetting::CUSTOMER_SETTING_EEL_PFC] ?? ''

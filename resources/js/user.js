@@ -3,7 +3,7 @@ window.User = function () {
         selector: '#users-table',
         resource: 'users',
         ajax: {
-            url: '/user/data-table/'
+            url: '/user/data-table'
         },
         columns: [
             {

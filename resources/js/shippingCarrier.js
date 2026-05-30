@@ -11,7 +11,7 @@ window.ShippingCarrier = function () {
         selector: '#shipping-carrier-table',
         resource: 'shipping-carrier',
         ajax: {
-            url: '/shipping_carrier/data-table/',
+            url: '/shipping_carrier/data-table',
             data: function(data){
                 let request = {}
                 filterForm
