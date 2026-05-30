@@ -472,7 +472,7 @@ Route::prefix('storefront')
         Route::get('/products', [ProductController::class, 'index']);
         Route::get('/product_search', [ProductController::class, 'productSearch']);
         Route::get('/products/{id}', [ProductController::class, 'show']);
-        Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
+        Route::get('/tag_products', [ProductController::class, 'getProductsByTag']);
 
         Route::post('/orders', [OrderController::class, 'store']);
     });
@@ -485,7 +485,7 @@ Route::prefix('storefront/{tenantSlug}')
         Route::get('/products', [ProductController::class, 'index']);
         Route::get('/product_search', [ProductController::class, 'productSearch']);
         Route::get('/products/{id}', [ProductController::class, 'show']);
-        Route::get('/tag_products/{tagSlug}', [ProductController::class, 'getProductsByTag']);
+        Route::get('/tag_products', [ProductController::class, 'getProductsByTag']);
 
         Route::post('/orders', [OrderController::class, 'store']);
     });
