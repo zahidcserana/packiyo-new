@@ -8,6 +8,7 @@ use App\Components\Shipping\Providers\EasypostShippingProvider;
 use App\Components\Shipping\Providers\WebshipperShippingProvider;
 use App\Components\Shipping\Providers\TribirdShippingProvider;
 use App\Components\Shipping\Providers\PathaoShippingProvider;
+use App\Components\Shipping\Providers\SteadfastShippingProvider;
 use App\Events\OrderShippedEvent;
 use App\Exceptions\ShippingException;
 use App\Interfaces\BaseShippingProvider;
@@ -38,6 +39,7 @@ class ShippingComponent extends BaseComponent
     public const SHIPPING_CARRIER_SERVICE_TRIBIRD = 'tribird';
 
     public const SHIPPING_CARRIER_SERVICE_EXTERNAL = 'external';
+    public const SHIPPING_CARRIER_SERVICE_STEADFAST = 'steadfast';
 
     public const SHIPPING_CARRIERS = [
         ShippingComponent::SHIPPING_CARRIER_SERVICE_GENERIC => GenericShippingProvider::class,
@@ -46,6 +48,7 @@ class ShippingComponent extends BaseComponent
         ShippingComponent::SHIPPING_CARRIER_SERVICE_PATHAO => PathaoShippingProvider::class,
         ShippingComponent::SHIPPING_CARRIER_SERVICE_TRIBIRD => TribirdShippingProvider::class,
         ShippingComponent::SHIPPING_CARRIER_SERVICE_EXTERNAL => ExternalCarrierShippingProvider::class,
+        ShippingComponent::SHIPPING_CARRIER_SERVICE_STEADFAST => SteadfastShippingProvider::class,
     ];
 
     public function getCarriers()
@@ -172,14 +175,16 @@ class ShippingComponent extends BaseComponent
      */
     public function getShippingRates(Order $order, array $input, array $params = []): array
     {
-        $easypostRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_EASYPOST, $order, $input, $params);
-        $tribirdRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_TRIBIRD, $order, $input, $params);
-        $webshipperRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_WEBSHIPPER, $order, $input, $params);
-        $pathaoRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_PATHAO, $order, $input, $params);
+        $easypostRates  = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_EASYPOST, $order, $input, $params);
+        $tribirdRates   = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_TRIBIRD, $order, $input, $params);
+        $webshipperRates= $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_WEBSHIPPER, $order, $input, $params);
+        $pathaoRates    = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_PATHAO, $order, $input, $params);
+        $steadfastRates = $this->getShippingProviderRates(self::SHIPPING_CARRIER_SERVICE_STEADFAST, $order, $input, $params);
 
         $rates = $this->mergeShippingProviderRates($easypostRates, $tribirdRates);
         $rates = $this->mergeShippingProviderRates($rates, $webshipperRates);
         $rates = $this->mergeShippingProviderRates($rates, $pathaoRates);
+        $rates = $this->mergeShippingProviderRates($rates, $steadfastRates);
 
         return array_merge(['cheapest_rate' => $this->getCheapestRate($rates)], $rates);
     }
@@ -209,14 +214,16 @@ class ShippingComponent extends BaseComponent
      */
     public function getCheapestShippingRates(Order $order, array $input, array $params = []): array
     {
-        $easypostCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_EASYPOST, $order, $input, $params);
-        $tribirdCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_TRIBIRD, $order, $input, $params);
-        $webshipperCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_WEBSHIPPER, $order, $input, $params);
-        $pathaoCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_PATHAO, $order, $input, $params);
-        $rates = $this->getComparedCheapestShippingRates($easypostCheapestRates, $tribirdCheapestRates);
+        $easypostCheapestRates  = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_EASYPOST, $order, $input, $params);
+        $tribirdCheapestRates   = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_TRIBIRD, $order, $input, $params);
+        $webshipperCheapestRates= $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_WEBSHIPPER, $order, $input, $params);
+        $pathaoCheapestRates    = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_PATHAO, $order, $input, $params);
+        $steadfastCheapestRates = $this->getProviderCheapestShippingRates(self::SHIPPING_CARRIER_SERVICE_STEADFAST, $order, $input, $params);
 
+        $rates = $this->getComparedCheapestShippingRates($easypostCheapestRates, $tribirdCheapestRates);
         $rates = $this->getComparedCheapestShippingRates($rates, $webshipperCheapestRates);
-        return $this->getComparedCheapestShippingRates($rates, $pathaoCheapestRates);
+        $rates = $this->getComparedCheapestShippingRates($rates, $pathaoCheapestRates);
+        return $this->getComparedCheapestShippingRates($rates, $steadfastCheapestRates);
     }
 
     /**
@@ -342,6 +349,14 @@ class ShippingComponent extends BaseComponent
 
                 if ($order->customer->parent_id) {
                     $params['credentials'] = $params['credentials']->merge($order->customer->parent->pathaoCredentials);
+                }
+
+                break;
+            case self::SHIPPING_CARRIER_SERVICE_STEADFAST:
+                $params['credentials'] = $order->customer->steadfastCredentials;
+
+                if ($order->customer->parent_id) {
+                    $params['credentials'] = $params['credentials']->merge($order->customer->parent->steadfastCredentials);
                 }
 
                 break;

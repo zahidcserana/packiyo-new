@@ -40,6 +40,7 @@ use App\Models\UserRole;
 use App\Models\UserSetting;
 use App\Models\Warehouse;
 use App\Models\Webhook;
+use App\Models\SteadfastCredential;
 use App\Models\WebshipperCredential;
 use App\Policies\BulkInvoiceBatchPolicy;
 use App\Policies\ImagePolicy;
@@ -76,6 +77,7 @@ use App\Policies\UserSettingPolicy;
 use App\Policies\WarehousePolicy;
 use App\Policies\WebhookPolicy;
 use App\Policies\WebshipperCredentialPolicy;
+use App\Policies\SteadfastCredentialPolicy;
 use App\Policies\BillingRatePolicy;
 use App\Policies\InvoicePolicy;
 use App\Policies\RateCardPolicy;
@@ -111,6 +113,7 @@ class AuthServiceProvider extends ServiceProvider
         PurchaseOrderStatus::class => PurchaseOrderStatusPolicy::class,
         WebshipperCredential::class => WebshipperCredentialPolicy::class,
         EasypostCredential::class => EasypostCredentialPolicy::class,
+        SteadfastCredential::class => SteadfastCredentialPolicy::class,
         Tote::class => TotePolicy::class,
         Lot::class => LotPolicy::class,
         PickingCart::class => PickingCartPolicy::class,
