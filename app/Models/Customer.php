@@ -244,12 +244,12 @@ class Customer extends Model
 
     public function shippingMethods()
     {
-        return $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('active', true);
+        return $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('shipping_methods.active', true);
     }
 
     public function shippingMethodsWithCarrier()
     {
-        $shippingMethods = $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('active', true)->get();
+        $shippingMethods = $this->hasManyThrough(ShippingMethod::class, ShippingCarrier::class)->where('shipping_methods.active', true)->get();
 
         $result = [];
 
@@ -358,6 +358,11 @@ class Customer extends Model
     public function pathaoCredentials()
     {
         return $this->hasMany(PathaoCredential::class);
+    }
+
+    public function steadfastCredentials()
+    {
+        return $this->hasMany(SteadfastCredential::class);
     }
 
     public function webshipperCredentials()

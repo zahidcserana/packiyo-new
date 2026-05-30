@@ -213,6 +213,8 @@ return [
         \App\Providers\WebshipperShippingServiceProvider::class,
         \App\Providers\PathaoCredentialComponentServiceProvider::class,
         \App\Providers\PathaoShippingServiceProvider::class,
+        \App\Providers\SteadfastCredentialComponentServiceProvider::class,
+        \App\Providers\SteadfastShippingServiceProvider::class,
         \App\Providers\WebshipperCredentialComponentServiceProvider::class,
         \App\Providers\ToteComponentServiceProvider::class,
         \App\Providers\PickingCartComponentServiceProvider::class,
